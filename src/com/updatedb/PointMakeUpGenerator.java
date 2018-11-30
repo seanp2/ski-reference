@@ -14,8 +14,8 @@ import java.util.HashMap;
  * The main method of this class is used to update the database.
  */
 public class PointMakeUpGenerator {
-	public static int startList = 267;
-	public static int endList = 267;
+	public static int startList = 272;
+	public static int endList = 272;
 	public static String[] pointsNames = new String[]{"SL", "GS" , "SG" , "DH"};
 	private static int listsBackForIncrease = 13;
 
@@ -50,7 +50,8 @@ public class PointMakeUpGenerator {
 				int j = 0;
 				while (rs.next()) {
 					j++;
-					System.out.println("Points List: " + pointsList + " Athlete: " + j);
+					String competitorID = rs.getString("Competitorid");
+					System.out.println("Points List: " + pointsList + " Athlete: " + j + " Competitor ID: " + competitorID);
 					ArrayList<String> accuPoints = new ArrayList<>();
 					String gsPoints = rs.getString("GSpoints");
 					String slPoints = rs.getString("SLpoints");
@@ -61,7 +62,7 @@ public class PointMakeUpGenerator {
 					accuPoints.add(sgPoints);
 					accuPoints.add(dhPoints);
 					ArrayList<Double> curPoints = pointsToDouble(accuPoints);
-					String competitorID = rs.getString("Competitorid");
+
 					query = "SELECT " + "GSpoints, SLpoints, SGpoints, DHpoints, " +
 							"Competitorid " ;
 					query +=  ", GShigh, GSlow, SLhigh, SLlow,  SGhigh, SGlow, DHhigh, DHlow ";

@@ -33,13 +33,20 @@ public class Athlete {
 	public Athlete(int competitorID) throws IOException {
 		Document bioPage = Jsoup.connect("https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL" +
 				"&limit=10000&type=result&competitorid=" + competitorID).get();
-		boolean hasNextPage = true;
 		this.allResults = new ArrayList<>();
 
 		ArrayList<Date> dates = new ArrayList<>();
 		Elements datesOnPage = bioPage.select("#results-body .g-lg-4");
+		System.out.println("https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL" +
+				"&limit=10000&type=result&competitorid=" + competitorID);
+		System.out.println(datesOnPage.size());
 		for (int i = 0; i < datesOnPage.size(); i++) {
-			dates.add(new Date(datesOnPage.get(i).ownText(), true));
+			try {
+				dates.add(new Date(datesOnPage.get(i).ownText(), true));
+			} catch (StringIndexOutOfBoundsException e) {
+				e.printStackTrace();
+			}
+
 		}
 
 		ArrayList<String> disciplines = new ArrayList<>();
@@ -52,21 +59,27 @@ public class Athlete {
 		ArrayList<Double> points = new ArrayList<>();
 		Elements positionsOnPage = bioPage.select("#results-body .justify-right");
 		for (int i = 0; i < positionsOnPage.size(); i++ ) {
-			if (positionsOnPage.get(i).children().size() > 0 ) {
+			if (positionsOnPage.get(i).children().size() > 1 ) {
 				if (positionsOnPage.get(i).child(0).ownText().contains("D")
 				|| positionsOnPage.get(i).child(1).ownText().equals("")) {
 					points.add(990.0);
 				} else {
-
 					points.add(Double.parseDouble(positionsOnPage.get(i).child(1).ownText()));
 				}
 			}
 		}
 
+		System.out.println(dates.size());
+		System.out.println(disciplines.size());
+		System.out.println(points.size());
+		for (int i = 0; i < dates.size(); i++) {
+			try {
+				allResults.add(new BioResult(dates.get(i), disciplines.get(i), points.get(i)));
+			}
+			catch(IndexOutOfBoundsException e) {
 
-		for (int i = 0; i < datesOnPage.size(); i++) {
-			allResults.add(new BioResult(dates.get(i), disciplines.get(i), points.get(i)));
-			System.out.println(new BioResult(dates.get(i), disciplines.get(i), points.get(i)));
+			}
+//			System.out.println(new BioResult(dates.get(i), disciplines.get(i), points.get(i)));
 		}
 
 
@@ -177,17 +190,17 @@ public class Athlete {
 		ArrayList<BioResult> racesByEvent = racesByDiscipline(eventAcronym);
 		ArrayList<Double> accuScores = new ArrayList<>();
 		ArrayList<Double> accuTotal = new ArrayList<>();
-		System.out.println(racesByEvent.size());
+//		System.out.println(racesByEvent.size());
  		for (int j = 0; j < racesByEvent.size(); j++) {
 			BioResult result = racesByEvent.get(j);
 			accuTotal.add(result.getScore());
 
 			if (aUtil.getPointsList(result.getDate()) == pointsList - lastListDifference ||
 					aUtil.getPointsList(result.getDate()) == pointsList - lastListDifference - 1) {
-				System.out.println(result.getScore());
+//				System.out.println(result.getScore());
 				if (result.getScore() < hiLo[0] && hiLo[0] != result.getScore() && hiLo[1] != result.getScore()) {
 					accuScores.add(result.getScore());
-					System.out.println(result.getScore());
+//					System.out.println(result.getScore());
 				}
 			} else if (aUtil.getPointsList(result.getDate()) < pointsList - lastListDifference ) {
 				break;

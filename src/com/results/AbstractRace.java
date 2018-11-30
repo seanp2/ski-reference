@@ -20,6 +20,7 @@ public abstract class AbstractRace implements Race {
 	protected ArrayList<RaceAthlete> results;
 	private double penalty;
 	private boolean twoRunRace;
+	private ArrayList<String> competitorIDs;
 	private String event;
 	private String venue;
 	private ArrayList[] dnfs;
@@ -47,16 +48,46 @@ public abstract class AbstractRace implements Race {
 		this.venue = page.select("div h1").first().ownText();
 		String dateAsText = page.select("time span").first().ownText();
 		this.date = Date.monthAsLetters(dateAsText);
-		ArrayList<String> competitorIDs = new ArrayList<>();
+		this.competitorIDs = new ArrayList<>();
 		ArrayList<String> names = new ArrayList<>();
-//		page.getElementsByClass("justify-left.bold")
-//				.forEach(elem -> {System.out.println(elem.ownText());names.add(elem.ownText());});
-		page.getElementsByClass("g-lg-8 g-md-8 g-sm-7 g-xs-8 justify-left bold")
-				.forEach(elem -> {System.out.println(elem.ownText());names.add(elem.ownText());});
-		page.getElementsByClass("table-row pointer js-false-link")
-				.forEach(elem -> {
-					String dataLink = elem.attr("data-link");
-					competitorIDs.add(dataLink.substring(dataLink.indexOf("competitorid=") + "competitorid=".length()));});
+		String nameSelector;
+		if (twoRunRace) {//g-lg-8 g-md-8 g-sm-7 g-xs-8
+			nameSelector = "justify-left bold";
+		} else {
+			nameSelector = "g-lg-12 g-md-12 g-sm-11 g-xs-8 justify-left bold";
+		}
+
+
+		Elements rows = page.select(".table-row");
+		for (int i = 0; i < rows.size(); i++) {
+			Element row = rows.get(i);
+			if (row.hasAttr("href")) {
+				String athleteLink = row.attr("href");
+				if (athleteLink.contains("competitorid=")) {
+					String compID = athleteLink.substring(athleteLink.indexOf("competitorid=") + "competitorid=".length());
+					competitorIDs.add(compID);
+				}
+			}
+		}
+		System.out.println("COMPIDS: " + competitorIDs.size());
+		Elements namesOnPage = page.select(".justify-left.bold");
+		for (int i = 0; i < namesOnPage.size() ; i++) {
+			String name = namesOnPage.get(i).ownText();
+			if (name.substring(0, 2).equals(name.substring(0,2).toUpperCase())) {
+				System.out.println(namesOnPage.get(i).ownText());
+				names.add(namesOnPage.get(i).ownText());
+			}
+
+
+		}
+
+		System.out.println("NAMES " + names.size());
+
+//		page.getElementsByClass(".justify-left.bold")
+//				.forEach(elem -> {
+//					String dataLink = elem.attr("data-link");
+//					System.out.println(dataLink.substring(dataLink.indexOf("competitorid=") + "competitorid=".length()));
+//					competitorIDs.add(dataLink.substring(dataLink.indexOf("competitorid=") + "competitorid=".length()));});
 
 		this.results = new ArrayList<>();
 		this.initAthletes( names, competitorIDs);
@@ -82,7 +113,7 @@ public abstract class AbstractRace implements Race {
 			ArrayList<String> allCompIDs = new ArrayList<>();
 			int i = 0;
 			ArrayList<Integer> athleteIndexes = new ArrayList<>();
-			ArrayList<String> compIDS = this.getAllCIDs();
+			ArrayList<String> compIDS = this.competitorIDs;
 			while (rs.next()) {
 				if (compIDS.indexOf(rs.getString("Competitorid")) >= 0) {
 					athleteIndexes.add(i);
@@ -177,45 +208,53 @@ public abstract class AbstractRace implements Race {
 		Elements bibOnPage = page.select(".g-sm-1.gray");
 		for (Element bibDiv: bibOnPage) {
 			bibs.add(bibDiv.ownText());
-			System.out.println(bibDiv.ownText());
 		}
+		System.out.println("BIBS: " + bibs.size());
 
 		Elements birthYearsOnPage = page.select(".justify-sb :nth-child(5)");
 		for (Element birthYearDiv: birthYearsOnPage) {
-			System.out.println(birthYearDiv.ownText());
+
 			birthYears.add(birthYearDiv.ownText());
 		}
+
+		System.out.println("BirthYears: " + birthYears.size());
 
 		// The first 5 countries that come up with this selector are those of race officials
 		// Thus, they should not be considered when initializing the athletes
 		Elements countryNamesOnPage = page.select(".country__name-short");
 		for (int i = 0; i < countryNamesOnPage.size(); i ++) {
 			if (i > 4 ) {
-				System.out.println(countryNamesOnPage.get(i).ownText());
+
 				countries.add(countryNamesOnPage.get(i).ownText());
 			}
 
 		}
 
+		System.out.println("Nations: " + countries.size());
+
 		Elements run1OnPage = page.select("#events-info-results .hidden-xs:nth-child(7)");
 		for (Element run1Div : run1OnPage) {
-			System.out.println(run1Div.ownText());
 			run1Times.add(run1Div.ownText());
+			if (!twoRunRace) {
+				combinedTimes.add(run1Div.ownText());
+			}
 		}
+
+		System.out.println("RUN 1: " + run1Times.size());
 
 		if (twoRunRace) {
 			Elements run2OnPage = page.select("#events-info-results .hidden-xs:nth-child(8)");
 			for (Element run2Div : run2OnPage) {
-				System.out.println(run2Div.ownText());
 				run2Times.add(run2Div.ownText());
 			}
 
 			Elements combinedTimesOnPage = page.select("#events-info-results .hidden-xs:nth-child(9)");
-			for (Element combinedTimeDiv : combinedTimesOnPage) {
-				System.out.println(combinedTimeDiv.ownText());
-				combinedTimes.add(combinedTimeDiv.ownText());
+			for (int i = 0; i < combinedTimesOnPage.size(); i++) {
+				combinedTimes.add(combinedTimesOnPage.get(i).ownText());
 			}
 		}
+		System.out.println("COMBINED TIMES: "+ combinedTimes.size());
+
 
 		Elements diffTimesOnPage = page.select("#events-info-results .g-xs-5");
 		// The winner has a differential time of 0.0 seconds
@@ -225,16 +264,18 @@ public abstract class AbstractRace implements Race {
 				diffTimes.add("0.00");
 				System.out.println("0.00");
 			} else {
-				System.out.println(diffTimesOnPage.get(i).ownText().substring(1));
+
 				diffTimes.add(diffTimesOnPage.get(i).ownText().substring(1));
 			}
 		}
+		System.out.println("diff times: " + diffTimes.size());
 
 		Elements fisPointsOnPage = page.select("#events-info-results .g-xs-3.justify-right");
 		for (int i = 0; i < fisPointsOnPage.size(); i++) {
-			System.out.println(fisPointsOnPage.get(i).ownText());
+
 			fisPoints.add(fisPointsOnPage.get(i).ownText());
 		}
+		System.out.println("fis points: " + fisPoints.size());
 
 		//The size of combinedTimes is the number of racers who have
 		//successfully finished the race
@@ -249,17 +290,27 @@ public abstract class AbstractRace implements Race {
 						AthleteUtils.minutesToSeconds(run1Times.get(i)),
 						AthleteUtils.minutesToSeconds(diffTimes.get(i)), Double.parseDouble(fisPoints.get(i)));
 			}
+			try {
+				RaceAthlete athlete = new RaceAthlete(Integer.parseInt(competitorIDs.get(i)), names.get(i),
+						Integer.parseInt(birthYears.get(i)), countries.get(i), resultOfAthlete);
+				this.results.add(athlete);
+			} catch  (NumberFormatException e) {
+
+			}
+
+
+
+		}
+		this.dnfs = new ArrayList[] {new ArrayList<RaceAthlete>(), new ArrayList<RaceAthlete>()};
+		for (int i = combinedTimes.size(); i < competitorIDs.size(); i++) {
+			DNF result  = new DNF(Integer.parseInt(bibs.get(i)), 1);
 			RaceAthlete athlete = new RaceAthlete(Integer.parseInt(competitorIDs.get(i)), names.get(i),
-					Integer.parseInt(birthYears.get(i)), countries.get(i), resultOfAthlete);
-			System.out.println(competitorIDs.get(i));
-			System.out.println(names.get(i));
-			System.out.println(birthYears.get(i));
-			System.out.println(countries.get(i));
-			System.out.println(athlete);
+					Integer.parseInt(birthYears.get(i)), countries.get(i), result);
 			this.results.add(athlete);
+			this.dnfs[0].add(athlete);
 		}
 
-		this.dnfs = new ArrayList[] {new ArrayList<RaceAthlete>(), new ArrayList<RaceAthlete>()};
+
 
 	}
 
@@ -321,13 +372,7 @@ public abstract class AbstractRace implements Race {
 	/**
 	 * @return an ArrayList of competitor id's for every athlete in the race
 	 */
-	private ArrayList<String> getAllCIDs() {
-		ArrayList<String> ids = new ArrayList<>();
-		for(RaceAthlete athlete : results) {
-			ids.add(athlete.getCompetitorID() + "");
-		}
-		return ids;
-	}
+
 
 
 

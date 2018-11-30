@@ -16,12 +16,13 @@ public class AthleteTest {
 
 
 
+
 	@Test
 	public void test2() {
 		System.out.println("//////////");
 
 		try {
-			Athlete ted = new Athlete(35276);
+			Athlete ted = new Athlete(138136);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -66,6 +67,27 @@ public class AthleteTest {
 		}
 	}
 
+	@Test
+	public void  test31() {
+		try {
+			Athlete mufuckin = new Athlete(Integer.parseInt("172438"));
+//			Athlete mufuckin = new Athlete(172438);
+		} catch (IOException e) {
+			System.out.println("FUCK");
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void  test32() {
+		try {
+			Athlete mufuckin = new Athlete(156292);
+//			Athlete mufuckin = new Athlete(172438);
+		} catch (IOException e) {
+			System.out.println("FUCK");
+			e.printStackTrace();
+		}
+	}
 
 	@Test
 	public void  test4() {

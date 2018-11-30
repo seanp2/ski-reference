@@ -94,6 +94,15 @@ public class RaceTest {
 
 
 	@Test
+	public void holscherTest() {
+		try {
+			TechRace dHolscherRace = new TechRace("https://data.fis-ski.com/dynamic/results.html?sector=AL&raceid=95425", "GS");
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
 	public void test8() {
 		try {
 			SpeedRace NorAmSpeed = new SpeedRace("https://data.fis-ski.com/dynamic/results.html?sector=AL&raceid=89262", "SG");
