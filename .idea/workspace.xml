@@ -7,6 +7,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d04c4da0-bf64-48e4-a869-476c7695b8e2" name="Default Changelist" comment="Small Updates">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/Error.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/Header.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/Result.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/ResultSearch.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/ResultsHeader.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/ResultServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/AbstractRace.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/AthleteUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/DNF.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/Finish.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/Race.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/RaceAthlete.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/Result.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/SpeedRace.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/TechRace.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/updatedb/Athlete.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/updatedb/BioResult.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/updatedb/DBconnection.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/updatedb/PointMakeUpGenerator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/util/Date.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/lib/commons-io-2.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/lib/jsoup-1.11.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/lib/jsoup-1.7.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/lib/mysql-connector-java-8.0.12.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/sean-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/Welcome.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/sean-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SkiReference/SkiReference.war" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/ResultServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/AbstractRace.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/AthleteUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/DNF.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/Finish.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/Race.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/RaceAthlete.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/Result.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/SpeedRace.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/TechRace.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/Athlete.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/BioResult.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/DBconnection.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/PointMakeUpGenerator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/util/Date.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/test/SkiAnalysisSite/TestAthleteUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/test/SkiAnalysisSite/com/biography/AthleteTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/test/SkiAnalysisSite/com/results/RaceTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/test/SkiAnalysisSite/com/util/DateTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/results/RaceAthlete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/RaceAthlete.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -227,8 +280,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/results/RaceAthlete.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="26" column="2" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
+            <state relative-caret-position="208">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -347,7 +400,7 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -500,7 +553,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545204426370" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545204589747" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Change SQL Dialect" value="GenericSQL&#10;MySQL" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
@@ -892,7 +945,7 @@
       <workItem from="1545098630197" duration="12158000" />
       <workItem from="1545171244724" duration="1964000" />
       <workItem from="1545176868823" duration="372000" />
-      <workItem from="1545192381710" duration="8729000" />
+      <workItem from="1545192381710" duration="9327000" />
     </task>
     <task id="LOCAL-00001" summary="small updates">
       <created>1543549447425</created>
@@ -951,7 +1004,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="468322000" />
+    <option name="totallyTimeSpent" value="468920000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="68" y="24" width="1280" height="740" extended-state="0" />
@@ -1304,8 +1357,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/results/RaceAthlete.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="26" column="2" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
+        <state relative-caret-position="208">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>

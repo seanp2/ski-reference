@@ -24,7 +24,7 @@ public class RaceAthlete {
 
 //	private final double score;
 	
-	
+
 	public RaceAthlete(int competitorID, String lastfirstName,
 			int birthyear, String nation, Result result)
 			throws IllegalArgumentException {
