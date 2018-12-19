@@ -24,22 +24,7 @@ public class RaceAthlete {
 
 //	private final double score;
 	
-	/**
-	 *
-	 * @param bibNumber The start position of the athlete. Known as the bib number in ski racing.
-	 * @param run1Time The first run time result of the athlete. Represented as a String in 
-	 * 					the case that the athlete did not finish the run, which would be represented
-	 * 					as DNF
-	 * @param run2Time The second run time result of the athlete. Represented as a String in 
-	 * 					the case that the athlete did not finish the run, which would be represented
-	 * 					as DNF
-	 * @param place The final position of the athlete in this race, represented as a String in case  
-	 * 				the athlete did not finish
-	 * @param score The FIS score awarded to the athlete for their result
-	 * @throws IllegalArgumentException if the fields run1Time, run2Time, or place are either a string of
-	 * 									numbers or the exact string "DNF"
-	 * 
-	 */
+	
 	public RaceAthlete(int competitorID, String lastfirstName,
 			int birthyear, String nation, Result result)
 			throws IllegalArgumentException {
