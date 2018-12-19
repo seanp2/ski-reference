@@ -14,17 +14,17 @@ import java.util.HashMap;
  * The main method of this class is used to update the database.
  */
 public class PointMakeUpGenerator {
-	public static int startList = 272;
-	public static int endList = 272;
+	public static int startList = 274;
+	public static int endList = 274;
 	public static String[] pointsNames = new String[]{"SL", "GS" , "SG" , "DH"};
 	private static int listsBackForIncrease = 13;
 
 
 	/**
-	 * This method is used to update the database everytime a new FIS points list
+	 * This method is used to update the database every time a new FIS points list
 	 * comes out. Updates each High and Low scores which are averaged to create an
 	 * athletes world ranking FIS points in a discipline.
-	 * Does this for each event, for every athlete in any given FIS points list.
+	 * Does this for each discipline, for every athlete in any given FIS points list.
 	 * Ultimately this database update is used such that the higher of the two scores being
 	 * averaged for the world rank is used to gage whether an athlete has lowered his
 	 * world ranking at any given FIS alpine race competition.

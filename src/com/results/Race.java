@@ -59,12 +59,5 @@ public interface Race {
 	RaceAthlete attackFromTheBack();
 
 
-
-
-
-
-
-
-
-
+	Double[] getScoreMinusPoints();
 }

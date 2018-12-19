@@ -30,7 +30,7 @@ public class DNF implements Result {
 
 	@Override
 	public String getCombined() {
-		return "DNF" + this.runNotFinished;
+		return "DNF"; //+ this.runNotFinished;
 	}
 
 

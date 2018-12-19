@@ -18,6 +18,8 @@
         <jsp-file>/Welcome.jsp</jsp-file>
     </servlet>
 
+
+
     <servlet>
         <servlet-name>resultdisplay</servlet-name>
         <jsp-file>/Result.jsp</jsp-file>
@@ -37,6 +39,8 @@
         <servlet-name>result</servlet-name>
         <url-pattern>/ResultSearch</url-pattern>
     </servlet-mapping>
+
+
 
 
 

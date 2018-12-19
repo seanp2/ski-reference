@@ -30,7 +30,7 @@
         border-radius: 4px;
     }
 
-    /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+
     .header a.logo {
         font-size: 25px;
         font-weight: bold;
@@ -57,11 +57,11 @@
 </style>
 <body align = "middle" bgcolor=#EFF2F4 >
 <div class="header">
-    <div align="left">
-    <a href="http://www.ski-reference.com/" class="logo" >
-        Home
-    </a>
-    </div>
+    <%--<div align="left">--%>
+    <%--<a href="http://www.ski-reference.com/" class="logo" >--%>
+        <%--Home--%>
+    <%--</a>--%>
+    <%--</div>--%>
     <div align="center">
     <%@ include file="ResultSearch.jsp" %>
     </div>

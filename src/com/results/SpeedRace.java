@@ -1,6 +1,7 @@
 package com.results;
 
 import com.results.AbstractRace;
+import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
@@ -17,8 +18,10 @@ public class SpeedRace extends AbstractRace {
 	 * @param event event acronym (either "GS" ,or "SL")
 	 * @throws IOException
 	 */
-	public SpeedRace(String url, String event) throws IOException {
-		super(url, event);
+//	public SpeedRace(String url, String event) throws IOException {
+	public SpeedRace(Document page) throws IOException {
+//		super(url, event);
+		super(page);
 	}
 
 	@Override
@@ -54,20 +57,5 @@ public class SpeedRace extends AbstractRace {
 	}
 
 
-	@Override
-	protected   Result transformResult(String resultsAsString, int factor) {
-		String[] splitString = resultsAsString.split("\\s");
-		String bib = splitString[1];
-		if (factor == 0) {
-			String difference = splitString[7];
-			if (difference.equals("")) {
-				difference = "0.0";
-			}
-			return new Finish(Integer.parseInt(splitString[0]), Integer.parseInt(bib), AthleteUtils.minutesToSeconds(splitString[6]),
-						AthleteUtils.minutesToSeconds(difference), Double.parseDouble(splitString[8]));
-		}
-		else {
-			return new DNF(Integer.parseInt(bib), factor);
-		}
-	}
+
 }

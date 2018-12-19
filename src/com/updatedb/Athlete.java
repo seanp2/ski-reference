@@ -1,12 +1,9 @@
 package com.updatedb;
 
-
 import com.results.AthleteUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.io.IOException;
 import java.util.*;
 import com.util.Date;
@@ -37,16 +34,12 @@ public class Athlete {
 
 		ArrayList<Date> dates = new ArrayList<>();
 		Elements datesOnPage = bioPage.select("#results-body .g-lg-4");
-		System.out.println("https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL" +
-				"&limit=10000&type=result&competitorid=" + competitorID);
-		System.out.println(datesOnPage.size());
 		for (int i = 0; i < datesOnPage.size(); i++) {
 			try {
 				dates.add(new Date(datesOnPage.get(i).ownText(), true));
 			} catch (StringIndexOutOfBoundsException e) {
 				e.printStackTrace();
 			}
-
 		}
 
 		ArrayList<String> disciplines = new ArrayList<>();
@@ -64,14 +57,15 @@ public class Athlete {
 				|| positionsOnPage.get(i).child(1).ownText().equals("")) {
 					points.add(990.0);
 				} else {
-					points.add(Double.parseDouble(positionsOnPage.get(i).child(1).ownText()));
+					try {
+						points.add(Double.parseDouble(positionsOnPage.get(i).child(1).ownText()));
+					} catch (NumberFormatException e) {
+						//
+					}
 				}
 			}
 		}
 
-		System.out.println(dates.size());
-		System.out.println(disciplines.size());
-		System.out.println(points.size());
 		for (int i = 0; i < dates.size(); i++) {
 			try {
 				allResults.add(new BioResult(dates.get(i), disciplines.get(i), points.get(i)));
@@ -79,56 +73,9 @@ public class Athlete {
 			catch(IndexOutOfBoundsException e) {
 
 			}
-//			System.out.println(new BioResult(dates.get(i), disciplines.get(i), points.get(i)));
 		}
-
-
-
-
-
-
-//			ArrayList<String> textInfo = new ArrayList<>();
-//			for (Element i : tables) {
-//				if (i.ownText().equals("")) {
-//					for (Element k : i.children()) {
-//						if (!k.ownText().equals("")) {
-//							textInfo.add(k.ownText());
-//						}
-//					}
-//				} else {
-//					textInfo.add(i.ownText());
-//				}
-//			}
-//			for (int i = 0; i < textInfo.size(); i++) {
-//				System.out.println(textInfo.get(i));
-//				try {
-//					com.util.Date raceDate = new com.util.Date(textInfo.get(i), true);
-//					String venue = textInfo.get(i + 1);
-//					String nation = textInfo.get(i + 2);
-//					String category = textInfo.get(i + 3);
-//					String discipline = textInfo.get(i + 4);
-//					String rank = textInfo.get(i + 5);
-//					double score;
-//					try {
-//						score = Double.parseDouble(textInfo.get(i + 6));
-//					} catch( NumberFormatException e) {
-//						// If the string is empty
-//						score = 990.0;
-//					} catch (IndexOutOfBoundsException e) {
-//						// If the last result on the page is a dnf
-//						// there will not be a string there.
-//						score = 990.0;
-//					}
-//					this.allResults.add(new BioResult(raceDate, venue, nation, category, discipline, rank, score));
-//
-//				} catch (Exception e) {
-//					// Allow to fail, this String was not a date and is not the start of a result
-//				}
 	}
 
-//		for (BioResult result : allResults) {
-//			System.out.println(result);
-//		}
 
 
 
@@ -142,7 +89,7 @@ public class Athlete {
 	 *              discipline acronym
 	 */
 	private String expandEventAcronym(String discipline) throws IllegalArgumentException {
-		String event = "";
+		String event;
 		switch (discipline) {
 			case "SL":
 				event = "Slalom";
@@ -190,17 +137,15 @@ public class Athlete {
 		ArrayList<BioResult> racesByEvent = racesByDiscipline(eventAcronym);
 		ArrayList<Double> accuScores = new ArrayList<>();
 		ArrayList<Double> accuTotal = new ArrayList<>();
-//		System.out.println(racesByEvent.size());
+
  		for (int j = 0; j < racesByEvent.size(); j++) {
 			BioResult result = racesByEvent.get(j);
 			accuTotal.add(result.getScore());
 
 			if (aUtil.getPointsList(result.getDate()) == pointsList - lastListDifference ||
 					aUtil.getPointsList(result.getDate()) == pointsList - lastListDifference - 1) {
-//				System.out.println(result.getScore());
 				if (result.getScore() < hiLo[0] && hiLo[0] != result.getScore() && hiLo[1] != result.getScore()) {
 					accuScores.add(result.getScore());
-//					System.out.println(result.getScore());
 				}
 			} else if (aUtil.getPointsList(result.getDate()) < pointsList - lastListDifference ) {
 				break;

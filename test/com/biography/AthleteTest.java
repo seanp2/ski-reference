@@ -70,8 +70,7 @@ public class AthleteTest {
 	@Test
 	public void  test31() {
 		try {
-			Athlete mufuckin = new Athlete(Integer.parseInt("172438"));
-//			Athlete mufuckin = new Athlete(172438);
+			Athlete mufuckin = new Athlete(Integer.parseInt("138408"));
 		} catch (IOException e) {
 			System.out.println("FUCK");
 			e.printStackTrace();

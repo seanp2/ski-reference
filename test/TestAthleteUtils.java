@@ -9,44 +9,13 @@ import static org.junit.Assert.assertEquals;
 
 
 public class TestAthleteUtils {
-	@Test(expected = IllegalArgumentException.class)
-	public void testCompID1() {
-		for (int i = 0; i < 1000000; i++) {
-			AthleteUtils.checkCompetitorID(i, "WASHINGTON George");
-		}
-	}
+
 	
 	
-	
-	@Test
-	public void testCompID2() {
-		assertEquals(2000, AthleteUtils.checkCompetitorID(2000, "ASPORT"));
-		assertEquals(203574, AthleteUtils.checkCompetitorID(203574, "POMERANTZ"));
-	}
-	@Test(expected = IllegalArgumentException.class)
-	public void testCompID3() {
-		AthleteUtils.checkCompetitorID(2001, "ASPORT");
-	}
-	@Test(expected = IllegalArgumentException.class)
-	public void testCompID4() {
-		AthleteUtils.checkCompetitorID(2000, "ASPORTs");
-	}
-	@Test
-	public void testCompID6() {
-		AthleteUtils.checkCompetitorID(2000, "asport");
-	}
 
 
 	
-//	@Test
-//	public void testSearch( ) {
-//		try {
-//			assertEquals("", AthleteUtils.searchAthlete(1).toString());
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+
 	
 	@Test
 	public void testDate() {

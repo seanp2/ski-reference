@@ -16,37 +16,9 @@ import java.util.Scanner;
 
 public class AthleteUtils {
 	Document fispages;
-	
-	public AthleteUtils() {
-	}
 
 	
-	/**
-	 * Makes sure that the given competitor ID is valid and represents an athlete
-	 * @param competitorID the competitor ID of an athlete
-	 * @param lastname the last name of the competitor
-	 * @return the competitor ID
-	 * @throws IllegalArgumentException if the competitor ID is invalid
-	 */
-	public static int checkCompetitorID(int competitorID, String lastname) throws IllegalArgumentException {
-	  Connection bioPage;
-		bioPage = Jsoup.connect("https://data.fis-ski.com/dynamic/athlete-biography.html?sector=AL&competitorid="
-				  + competitorID);
-		try {
-			if (bioPage.get().toString().contains("<title>" + lastname)) {
-				return competitorID;
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			throw new IllegalArgumentException(String.format("Competitor ID %d is invalid", competitorID));
-		}
-
-		return 0;
-
-	}
-
-
-
+	public AthleteUtils() {}
 
 
 	public static double minutesToSeconds(String time) {
@@ -83,43 +55,7 @@ public class AthleteUtils {
 	 * @param date the date
 	 * @return the FIS points list which the given date corresponds to
 	 */
-//	public int getPointsList(Date date) {
-//		Document fispages = null;
-//		try {
-//			this.fispages = Jsoup.connect("https://data.fis-ski.com/alpine-skiing/fis-points-lists.html").get();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		Elements tables = fispages.select(".info_clip , #fis-points-list-body .g-xs-24");
-//		ArrayList<String> textInfo = new ArrayList<>();
-//		for(Element i : tables)  {
-//			for (Element k : i.children()) {
-//				textInfo.add(k.ownText());
-//			}
-//		}
-//		for (int i = 0; i < textInfo.size(); i++) {
-//			try {
-//				Date startDate = new Date(textInfo.get(i).substring(0,10));
-//				Date endDate = new Date(textInfo.get(i + 1).substring(0,10));
-//				if (date.sameOrLaterThan(startDate) && endDate.sameOrLaterThan(date)) {
-//					try {
-//						String accu = fispages.html().substring(fispages.html().indexOf(startDate.toString()));
-//						String accu2 = accu.substring(accu.indexOf("listid="));
-//						return Integer.parseInt(accu2.substring(7, accu2.indexOf("\"")));
-//					} catch(Exception e) {
-//						e.printStackTrace();
-//					}
-//				}
-//			} catch(Exception e ) {
-//				//NumberParsing or IllegalArgument exceptions will be thrown
-//				//by Date constructor
-//			}
-//		}
-//		return 1;
-//	}
-
 	public int getPointsList(Date date) {
-
 		try {
 			this.fispages = Jsoup.connect("https://www.fis-ski.com/DB/alpine-skiing/fis-points-lists.html").get();
 		} catch (IOException e) {
@@ -155,21 +91,6 @@ public class AthleteUtils {
 			}
 		}
 
-
-
-//		for (int i = 0; i < rows.size(); i++) {
-//			Element row = rows.get(i);
-//			Date startDate = new Date(row.select("#fis-points-list-body .hidden-sm-down").get(0).ownText());
-//			Date endDate = new Date(row.select("#fis-points-list-body .hidden-sm-down").get(1).ownText());
-//			if (date.sameOrLaterThan(startDate) && endDate.sameOrLaterThan(date)){
-//				Element csvDiv = row.select(".split-row__item:nth-child(1) :nth-child(2) .link__text").first();
-//				System.out.println(csvDiv);
-//			}
-//
-//
-//		}
-
-
 		return 1;
 
 	}
@@ -187,12 +108,6 @@ public class AthleteUtils {
 				raceid = parameter.substring(7);
 			}
 		}
-//		String raceID = url.substring(url.indexOf("raceid=") + 7);
-//		try {
-//			Integer.parseInt(raceID);
-//		}catch (NumberFormatException e) {
-//			throw new IllegalArgumentException("Invalid URL");
-//		}
 		if (raceid.equals("-1")) {
 			throw new IllegalArgumentException("Invalid URL");
 		}

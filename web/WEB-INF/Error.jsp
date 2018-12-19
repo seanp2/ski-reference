@@ -25,7 +25,12 @@
         </a>
     </div>
     <%@ include file="ResultSearch.jsp" %>
-    *Race not found. Make sure to enter the correct discipline and result URL from the FIS website.
+    *Race not found. Make sure to enter the correct result URL from the FIS website.
+</div>
+<div  style="bottom:10px;position:absolute;">
+    <div align="center">
+        Developed by Sean Pomerantz. Email: pomerantz.s@husky.neu.edu
+    </div>
 </div>
 </body>
 </html>

@@ -2,17 +2,12 @@ package com.results;
 
 import com.updatedb.DBconnection;
 import com.util.Date;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public abstract class AbstractRace implements Race {
 	private Document page;
@@ -24,77 +19,52 @@ public abstract class AbstractRace implements Race {
 	private String event;
 	private String venue;
 	private ArrayList[] dnfs;
+	private Double[] scoreMinusPoints;
 
 
 
-	public AbstractRace(String url, String event) throws IllegalArgumentException, IOException {
-		this.event = event;
-		if (!url.substring(0,63).equals("https://data.fis-ski.com/dynamic/results.html?sector=AL&raceid=")) {
-			throw new IllegalArgumentException("URL does not lead to a valid FIS race result");
-		}
-		if (Arrays.asList( new String[]{"DH", "SG", "SL", "GS", "AC"}).indexOf(event) == -1) {
-			throw new IllegalArgumentException("Invalid Event name");
-		}
-
+	public AbstractRace(Document page) throws IllegalArgumentException, IOException {
+		this.page = page;
+		this.event = getEventAcronym(page.select(".event-header__kind").first().ownText());
 		if (event.equals("SG") || event.equals("DH")) {
 			this.twoRunRace = false;
 		} else {
 			this.twoRunRace = true;
 		}
-
-		this.page = Jsoup.connect(url).get();
-
-		Elements tables = page.select(".table_min_height div");
 		this.venue = page.select("div h1").first().ownText();
 		String dateAsText = page.select("time span").first().ownText();
 		this.date = Date.monthAsLetters(dateAsText);
 		this.competitorIDs = new ArrayList<>();
-		ArrayList<String> names = new ArrayList<>();
-		String nameSelector;
-		if (twoRunRace) {//g-lg-8 g-md-8 g-sm-7 g-xs-8
-			nameSelector = "justify-left bold";
-		} else {
-			nameSelector = "g-lg-12 g-md-12 g-sm-11 g-xs-8 justify-left bold";
-		}
-
-
-		Elements rows = page.select(".table-row");
-		for (int i = 0; i < rows.size(); i++) {
-			Element row = rows.get(i);
-			if (row.hasAttr("href")) {
-				String athleteLink = row.attr("href");
-				if (athleteLink.contains("competitorid=")) {
-					String compID = athleteLink.substring(athleteLink.indexOf("competitorid=") + "competitorid=".length());
-					competitorIDs.add(compID);
-				}
-			}
-		}
-		System.out.println("COMPIDS: " + competitorIDs.size());
-		Elements namesOnPage = page.select(".justify-left.bold");
-		for (int i = 0; i < namesOnPage.size() ; i++) {
-			String name = namesOnPage.get(i).ownText();
-			if (name.substring(0, 2).equals(name.substring(0,2).toUpperCase())) {
-				System.out.println(namesOnPage.get(i).ownText());
-				names.add(namesOnPage.get(i).ownText());
-			}
-
-
-		}
-
-		System.out.println("NAMES " + names.size());
-
-//		page.getElementsByClass(".justify-left.bold")
-//				.forEach(elem -> {
-//					String dataLink = elem.attr("data-link");
-//					System.out.println(dataLink.substring(dataLink.indexOf("competitorid=") + "competitorid=".length()));
-//					competitorIDs.add(dataLink.substring(dataLink.indexOf("competitorid=") + "competitorid=".length()));});
-
+		initCompetitorIDS();
+		ArrayList<String> names = this.getNames();
 		this.results = new ArrayList<>();
 		this.initAthletes( names, competitorIDs);
 		this.penalty = this.results.get(0).getResult().getScore();
 	}
 
 
+	public static String getEventAcronym(String fullEventName) {
+		String eventNamewithoutGender;
+		if (fullEventName.substring(0,1).equals("M")) {
+			eventNamewithoutGender = fullEventName.substring(6);
+		} else if (fullEventName.substring(0,1).equals("L")) {
+			eventNamewithoutGender = fullEventName.substring(8);
+
+		} else {
+			throw new IllegalArgumentException("Invalid event name");
+		}
+		if (eventNamewithoutGender.equals("Slalom")) {
+			return "SL";
+		} else if (eventNamewithoutGender.equals("Giant Slalom")) {
+			return "GS";
+		} else if (eventNamewithoutGender.equals("Super G"))  {
+			return "SG";
+		} else if (eventNamewithoutGender.equals("Downhill"))  {
+			return "DH";
+		} else {
+			throw new IllegalArgumentException("Invalid event name");
+		}
+	}
 
 
 	@Override
@@ -142,46 +112,26 @@ public abstract class AbstractRace implements Race {
 				sortedHighPoints[compIDS.indexOf(id)] = allHighs.get(athleteIndexes.get(j));
 				sortedPrePoints[compIDS.indexOf(id)] = points;
 			}
-			for (int m = 0; m < athleteIndexes.size(); m ++) {
-				if (sortedPrePoints[m] == null) {
-					sortedPrePoints[m] = 990.0;
-				}
-				if (sortedHighPoints[m] == null) {
-					sortedHighPoints[m] = 990.0;
-				}
-				results.get(m).setPreviousPoints(sortedPrePoints[m]);
-				if (sortedHighPoints[m] > results.get(m).getResult().getScore()) {
-					racersWhoScored.add(results.get(m));
+			for (int m = 0; m < athleteIndexes.size() + 1; m ++) {
+				try {
+					if (sortedPrePoints[m] == null) {
+						sortedPrePoints[m] = 990.0;
+					}
+					if (sortedHighPoints[m] == null) {
+						sortedHighPoints[m] = 990.0;
+					}
+					results.get(m).setPreviousPoints(sortedPrePoints[m]);
+					if (sortedHighPoints[m] > results.get(m).getResult().getScore()) {
+						racersWhoScored.add(results.get(m));
+					}
+				} catch(ArrayIndexOutOfBoundsException e) {
+					// *** Without this some races are s.t the last dnf does not receive prev Fis points
 				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return racersWhoScored;
-	}
-
-	/**
-	 * Finds the index of the results table within the larger list of tables
-	 * of the FIS result web page
-	 * @param tables the complete list of tables of the webpage
-	 * @return the index of results table
-	 */
-	private int getFirstAthleteRow(Elements tables) {
-		int firstAthleteTableAt = 0;
-		boolean breakLoop = false;
-		for (Element j : tables) {
-			if (breakLoop) {
-				break;
-			}
-			for (Element c : j.children()) {
-				if (c.toString().contains("href")) {
-					firstAthleteTableAt = tables.indexOf(j);
-					breakLoop = true;
-					break;
-				}
-			}
-		}
-		return firstAthleteTableAt;
 	}
 
 
@@ -209,28 +159,20 @@ public abstract class AbstractRace implements Race {
 		for (Element bibDiv: bibOnPage) {
 			bibs.add(bibDiv.ownText());
 		}
-		System.out.println("BIBS: " + bibs.size());
 
 		Elements birthYearsOnPage = page.select(".justify-sb :nth-child(5)");
 		for (Element birthYearDiv: birthYearsOnPage) {
-
 			birthYears.add(birthYearDiv.ownText());
 		}
-
-		System.out.println("BirthYears: " + birthYears.size());
 
 		// The first 5 countries that come up with this selector are those of race officials
 		// Thus, they should not be considered when initializing the athletes
 		Elements countryNamesOnPage = page.select(".country__name-short");
 		for (int i = 0; i < countryNamesOnPage.size(); i ++) {
 			if (i > 4 ) {
-
 				countries.add(countryNamesOnPage.get(i).ownText());
 			}
-
 		}
-
-		System.out.println("Nations: " + countries.size());
 
 		Elements run1OnPage = page.select("#events-info-results .hidden-xs:nth-child(7)");
 		for (Element run1Div : run1OnPage) {
@@ -239,8 +181,6 @@ public abstract class AbstractRace implements Race {
 				combinedTimes.add(run1Div.ownText());
 			}
 		}
-
-		System.out.println("RUN 1: " + run1Times.size());
 
 		if (twoRunRace) {
 			Elements run2OnPage = page.select("#events-info-results .hidden-xs:nth-child(8)");
@@ -253,8 +193,6 @@ public abstract class AbstractRace implements Race {
 				combinedTimes.add(combinedTimesOnPage.get(i).ownText());
 			}
 		}
-		System.out.println("COMBINED TIMES: "+ combinedTimes.size());
-
 
 		Elements diffTimesOnPage = page.select("#events-info-results .g-xs-5");
 		// The winner has a differential time of 0.0 seconds
@@ -262,21 +200,18 @@ public abstract class AbstractRace implements Race {
 		for (int i = 0; i < diffTimesOnPage.size(); i++) {
 			if (i == 0) {
 				diffTimes.add("0.00");
-				System.out.println("0.00");
+
 			} else {
 
 				diffTimes.add(diffTimesOnPage.get(i).ownText().substring(1));
 			}
 		}
-		System.out.println("diff times: " + diffTimes.size());
 
 		Elements fisPointsOnPage = page.select("#events-info-results .g-xs-3.justify-right");
 		for (int i = 0; i < fisPointsOnPage.size(); i++) {
 
 			fisPoints.add(fisPointsOnPage.get(i).ownText());
 		}
-		System.out.println("fis points: " + fisPoints.size());
-
 		//The size of combinedTimes is the number of racers who have
 		//successfully finished the race
 		for (int i = 0; i < combinedTimes.size(); i++) {
@@ -297,9 +232,6 @@ public abstract class AbstractRace implements Race {
 			} catch  (NumberFormatException e) {
 
 			}
-
-
-
 		}
 		this.dnfs = new ArrayList[] {new ArrayList<RaceAthlete>(), new ArrayList<RaceAthlete>()};
 		for (int i = combinedTimes.size(); i < competitorIDs.size(); i++) {
@@ -309,11 +241,22 @@ public abstract class AbstractRace implements Race {
 			this.results.add(athlete);
 			this.dnfs[0].add(athlete);
 		}
-
-
-
 	}
 
+	public Double[] getScoreMinusPoints() {
+		Double[] scoreMinusPoints = new Double[results.size()];
+		for (int i = 0; i < this.results.size(); i++) {
+			RaceAthlete athlete = results.get(i);
+			if (athlete.getResult().getScore() == 990 ) {
+				break;
+			}
+			if ( athlete.getPreviousPoints() != 990) {
+				scoreMinusPoints[i] = athlete.getResult().getScore() - athlete.getPreviousPoints();
+				System.out.println(scoreMinusPoints[i]);
+			}
+		}
+		return scoreMinusPoints;
+	}
 
 	@Override
 	public ArrayList<RaceAthlete> getResults() {
@@ -323,7 +266,6 @@ public abstract class AbstractRace implements Race {
 	@Override
 	public double pointsPerSecond() {
 		ArrayList<Result> endResults = new ArrayList<>();
-		System.out.println(this.results == null);
 		for (int i = 0; i < this.results.size(); i++) {
 			endResults.add(results.get(i).getResult());
 		}
@@ -346,34 +288,6 @@ public abstract class AbstractRace implements Race {
 	public Date getDate() {
 		return this.date;
 	}
-
-	/**
-	 * Recieves a string representing a result from an individual athlete.
-	 * The formatted String contains all text information from a row
-	 * in an FIS alpine result table.
-	 * The factor represents the type of result, whether it is full completion,
-	 * or did not finish run 1 or run 2.
-	 * The factor argument is necessary because specific information regarding
-	 * whether the athlete completed the race, did not finish run 1, or
-	 * did not finish run 2 is not available in an individual row.
-	 *
-	 * Finish Factor Guide:
-	 *    factor = 0 : full race completion
-	 *    factor = 1 : did not finish run one
-	 *    factor = 1 : did not finish run two
-	 *
-	 * @param resultsAsString the text information in a row of a FIS competition results table
-	 * @param factor the Finish Factor of the individual results
-	 * @return the Result holding the relevant finish information
-	 */
-	protected abstract Result transformResult(String resultsAsString, int factor);
-
-
-	/**
-	 * @return an ArrayList of competitor id's for every athlete in the race
-	 */
-
-
 
 
 	@Override
@@ -419,4 +333,33 @@ public abstract class AbstractRace implements Race {
 		}
 		return curAthlete;
 	}
+
+
+	private void initCompetitorIDS() {
+		Elements rows = this.page.select(".table-row");
+		for (int i = 0; i < rows.size(); i++) {
+			Element row = rows.get(i);
+			if (row.hasAttr("href")) {
+				String athleteLink = row.attr("href");
+				if (athleteLink.contains("competitorid=")) {
+					String compID = athleteLink.substring(athleteLink.indexOf("competitorid=") + "competitorid=".length());
+					competitorIDs.add(compID);
+				}
+			}
+		}
+	}
+
+
+	private ArrayList<String> getNames() {
+		ArrayList<String> names = new ArrayList<>();
+		Elements namesOnPage = page.select(".justify-left.bold");
+		for (int i = 0; i < namesOnPage.size(); i++) {
+			String name = namesOnPage.get(i).ownText();
+			if (name.substring(0, 2).equals(name.substring(0, 2).toUpperCase())) {
+				names.add(namesOnPage.get(i).ownText());
+			}
+		}
+		return names;
+	}
+
 }

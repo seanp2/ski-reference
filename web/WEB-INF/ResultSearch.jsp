@@ -17,12 +17,12 @@
     }
 </style>
 <form action="ResultSearch" method="get" style="font-size: larger">
-    Result URL: <input style="font-size: larger;font-family:Times New Roman, Times, serif;"
+    Result URL: <input style="font-size:larger;font-family:Times New Roman, Times, serif;"
                     type = "text" id="raceid" name="raceid">
-    Discipline:
-    <input type = "radio" name = "event" Value = "DH"> DH
-    <input type = "radio"  name = "event" Value = "SG"> SG
-    <input type = "radio"  name = "event" Value = "GS"> GS
-    <input type = "radio" name = "event" Value = "SL"> SL
+    <%--Discipline:--%>
+    <%--<input type = "radio" name = "event" Value = "DH"> DH--%>
+    <%--<input type = "radio"  name = "event" Value = "SG"> SG--%>
+    <%--<input type = "radio"  name = "event" Value = "GS"> GS--%>
+    <%--<input type = "radio" name = "event" Value = "SL"> SL--%>
     <input type = submit value = Search>
 </form>

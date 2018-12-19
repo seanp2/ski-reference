@@ -44,10 +44,7 @@ public class RaceAthlete {
 			int birthyear, String nation, Result result)
 			throws IllegalArgumentException {
 		this.lastfirstName = lastfirstName;
-		this.competitorID =  competitorID;//AthleteUtils.checkCompetitorID(competitorID, lastfirstName);
-
-//		this.run1Time = run1Time;
-//		this.run2Time = run2Time;
+		this.competitorID =  competitorID;
 		this.birthyear = birthyear;
 		this.nation = nation;
 		this.result = result;
@@ -88,8 +85,4 @@ public class RaceAthlete {
 		return this.birthyear + "";
 	}
 
-
-//	public boolean didNotFinish() {
-//		return run1Time.equals("DNF") || run2Time.equals("DNF");
-//	}
 }

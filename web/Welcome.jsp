@@ -6,7 +6,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <title>FIS Alpine Stats, Graphs, and More</title>
 
 </head>
@@ -40,5 +39,12 @@
     </div>
 <%@ include file="WEB-INF/ResultSearch.jsp" %>
 </div>
+<div  style="bottom:10px;position:absolute;">
+<div align="center">
+    Developed by Sean Pomerantz. Email: pomerantz.s@husky.neu.edu
+</div>
+</div>
 </body>
 </html>
+
+
