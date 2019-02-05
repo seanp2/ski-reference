@@ -8,51 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d04c4da0-bf64-48e4-a869-476c7695b8e2" name="Default Changelist" comment="Small Updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SkiAnalysisSite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SkiAnalysisSite.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/Result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/Result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/ResultServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/ResultServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/AbstractRace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/AbstractRace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/AthleteUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/AthleteUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/RaceAthlete.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/RaceAthlete.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/SpeedRace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/SpeedRace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/TechRace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/TechRace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/updatedb/Athlete.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/updatedb/Athlete.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/updatedb/DBconnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/updatedb/DBconnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/updatedb/PointMakeUpGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/updatedb/PointMakeUpGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/util/Date.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/util/Date.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/Welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/Welcome.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiReference/SkiReference.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiReference/SkiReference.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/ResultServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/ResultServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/AbstractRace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/AbstractRace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/AthleteUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/AthleteUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/RaceAthlete.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/RaceAthlete.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/SpeedRace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/SpeedRace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/TechRace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/TechRace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/Athlete.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/Athlete.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/DBconnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/DBconnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/PointMakeUpGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/PointMakeUpGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/util/Date.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/util/Date.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/SkiAnalysisSite/TestAthleteUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/SkiAnalysisSite/com/biography/AthleteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/SkiAnalysisSite/com/biography/AthleteTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/SkiAnalysisSite/com/results/RaceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/SkiAnalysisSite/com/results/RaceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/SkiAnalysisSite/com/util/DateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/SkiAnalysisSite/com/util/DateTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ResultServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ResultServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/AbstractRace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/AbstractRace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/AthleteUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/AthleteUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/DNF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/DNF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/RaceAthlete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/RaceAthlete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/SpeedRace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/SpeedRace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/TechRace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/TechRace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/updatedb/Athlete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/updatedb/Athlete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/updatedb/PointMakeUpGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/updatedb/PointMakeUpGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/util/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/util/Date.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/TestAthleteUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/results/TestAthleteUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/biography/AthleteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/biography/AthleteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/results/RaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/results/RaceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/util/DateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/util/DateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/Result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/Result.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -190,6 +145,7 @@
           <entry key="fispoints88" value="1" />
           <entry key="fispoints89" value="1" />
           <entry key="fispoints9" value="1" />
+          <entry key="gitignore" value="2" />
           <entry key="html" value="15" />
           <entry key="ico" value="4" />
           <entry key="iml" value="1" />
@@ -213,6 +169,7 @@
           <entry key="Image" value="13" />
           <entry key="JAVA" value="359" />
           <entry key="JSP" value="66" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="Properties" value="1" />
           <entry key="SQL" value="2" />
           <entry key="Scratch" value="31" />
@@ -223,6 +180,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cell" value="2" />
+          <entry key="gitignore" value="29" />
           <entry key="html" value="538" />
           <entry key="java" value="72466" />
           <entry key="jsp" value="15730" />
@@ -238,7 +196,7 @@
           <entry key="HTML" value="538" />
           <entry key="JAVA" value="72465" />
           <entry key="JSP" value="15729" />
-          <entry key="PLAIN_TEXT" value="86" />
+          <entry key="PLAIN_TEXT" value="115" />
           <entry key="Properties" value="25" />
           <entry key="SQL" value="15" />
           <entry key="Scratch" value="404" />
@@ -277,14 +235,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/updatedb/DBconnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
+            <state relative-caret-position="253">
               <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -308,15 +275,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
               <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/results/Result.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -394,13 +352,11 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/SearchServlet.java" />
-        <option value="$PROJECT_DIR$/src/com/biography/Biography.java" />
         <option value="$PROJECT_DIR$/src/com/biography/BioResult.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ec922f9d-b0c8-48f2-beed-b8c89aa6bcdb/console_1.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ec922f9d-b0c8-48f2-beed-b8c89aa6bcdb/console_2.sql" />
@@ -450,6 +406,8 @@
         <option value="$PROJECT_DIR$/src/com/updatedb/config.properties" />
         <option value="$PROJECT_DIR$/resources/config.properties" />
         <option value="$PROJECT_DIR$/src/com/updatedb/DBconnection.java" />
+        <option value="$PROJECT_DIR$/resources/.gitignore" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -506,11 +464,6 @@
             <path>
               <item name="SkiAnalysisSite" type="b2602c69:ProjectViewProjectNode" />
               <item name="SkiAnalysisSite" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkiAnalysisSite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkiAnalysisSite" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -531,6 +484,10 @@
               <item name="SkiAnalysisSite" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="SkiAnalysisSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -545,7 +502,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549403070968" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549404969704" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Change SQL Dialect" value="GenericSQL&#10;MySQL" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
@@ -574,11 +531,11 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Resources" />
+      <recent name="$PROJECT_DIR$/resources" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Resources" />
       <recent name="$PROJECT_DIR$/web" />
       <recent name="$PROJECT_DIR$/src/com/util" />
-      <recent name="$PROJECT_DIR$/web/WEB-INF" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/WEB-INF" />
@@ -956,7 +913,7 @@
       <workItem from="1547832117031" duration="909000" />
       <workItem from="1548198982035" duration="516000" />
       <workItem from="1548355450500" duration="3711000" />
-      <workItem from="1549396175447" duration="4853000" />
+      <workItem from="1549396175447" duration="5749000" />
     </task>
     <task id="LOCAL-00001" summary="small updates">
       <created>1543549447425</created>
@@ -1015,13 +972,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="498606000" />
+    <option name="totallyTimeSpent" value="499502000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49902153" visible="true" weight="0.32714054" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49902153" visible="true" weight="0.32714054" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1031,7 +988,7 @@
       <window_info id="Web" order="7" sideWeight="0.50097847" side_tool="true" weight="0.24140625" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32735425" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49030694" visible="true" weight="0.41917807" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49030694" visible="true" weight="0.41917807" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49919224" weight="0.47808218" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1130,8 +1087,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/biography/Biography.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/biography/BioResult.java" />
     <entry file="file://$PROJECT_DIR$/src/FirstServlet.java" />
     <entry file="file://$PROJECT_DIR$/src/SearchServlet.java" />
     <entry file="file://$PROJECT_DIR$/src/GetData.java" />
@@ -1367,13 +1322,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/updatedb/DBconnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
+        <state relative-caret-position="253">
           <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
