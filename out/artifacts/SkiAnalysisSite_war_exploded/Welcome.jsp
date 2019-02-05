@@ -6,17 +6,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <%--<link rel="icon" href="https://s3.us-east-2.amazonaws.com/elasticbeanstalk-us-east-2-120532899825/sean_2_url_xhZ_icon.ico" type="image/x-icon"/>--%>
-    <%--<link rel="shortcut icon" href="https://s3.us-east-2.amazonaws.com/elasticbeanstalk-us-east-2-120532899825/sean_2_url_xhZ_icon.ico" type="image/x-icon"/>--%>
-    <%--<link rel="shortcut icon" type="image/png" href='/favicon.ico'/>--%>
-    <%--<link rel="shortcut icon" type="image/png" href="https://s3.us-east-2.amazonaws.com/elasticbeanstalk-us-east-2-120532899825/sean_2_url_xhZ_icon.ico"/>--%>
-    <%--<link rel="shortcut icon" href="https://s3.us-east-2.amazonaws.com/elasticbeanstalk-us-east-2-120532899825/sean_2_url_xhZ_icon.ico" />--%>
-    <%--<link rel="shortcut icon" href="/favicon.ico">--%>
-    <%--<link rel="apple-touch-icon" href="/favicon.ico">--%>
-    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
-
-
-
     <title>FIS Alpine Stats, Graphs, and More</title>
 
 </head>

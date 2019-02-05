@@ -5,9 +5,10 @@ import com.util.Date;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+
+
 
 public abstract class AbstractRace implements Race {
 	private Document page;
@@ -19,11 +20,11 @@ public abstract class AbstractRace implements Race {
 	private String event;
 	private String venue;
 	private ArrayList[] dnfs;
-	private Double[] scoreMinusPoints;
 
 
 
-	public AbstractRace(Document page) throws IllegalArgumentException, IOException {
+
+	AbstractRace(Document page) throws IllegalArgumentException {
 		this.page = page;
 		this.event = getEventAcronym(page.select(".event-header__kind").first().ownText());
 		if (event.equals("SG") || event.equals("DH")) {
@@ -124,8 +125,8 @@ public abstract class AbstractRace implements Race {
 					if (sortedHighPoints[m] > results.get(m).getResult().getScore()) {
 						racersWhoScored.add(results.get(m));
 					}
-				} catch(ArrayIndexOutOfBoundsException e) {
-					// *** Without this some races are s.t the last dnf does not receive prev Fis points
+				} catch(IndexOutOfBoundsException e) {
+					// Without this some races are s.t the last dnf does not receive prev Fis points
 				}
 			}
 		} catch (SQLException e) {
@@ -161,8 +162,8 @@ public abstract class AbstractRace implements Race {
 		}
 
 		Elements birthYearsOnPage = page.select(".justify-sb :nth-child(5)");
-		for (Element birthYearDiv: birthYearsOnPage) {
-			birthYears.add(birthYearDiv.ownText());
+		for (int i = 1; i < birthYearsOnPage.size();i++){
+			birthYears.add(birthYearsOnPage.get(i).ownText());
 		}
 
 		// The first 5 countries that come up with this selector are those of race officials
@@ -202,7 +203,6 @@ public abstract class AbstractRace implements Race {
 				diffTimes.add("0.00");
 
 			} else {
-
 				diffTimes.add(diffTimesOnPage.get(i).ownText().substring(1));
 			}
 		}
@@ -230,7 +230,7 @@ public abstract class AbstractRace implements Race {
 						Integer.parseInt(birthYears.get(i)), countries.get(i), resultOfAthlete);
 				this.results.add(athlete);
 			} catch  (NumberFormatException e) {
-
+				e.printStackTrace();
 			}
 		}
 		this.dnfs = new ArrayList[] {new ArrayList<RaceAthlete>(), new ArrayList<RaceAthlete>()};
@@ -252,7 +252,7 @@ public abstract class AbstractRace implements Race {
 			}
 			if ( athlete.getPreviousPoints() != 990) {
 				scoreMinusPoints[i] = athlete.getResult().getScore() - athlete.getPreviousPoints();
-				System.out.println(scoreMinusPoints[i]);
+
 			}
 		}
 		return scoreMinusPoints;
@@ -356,6 +356,7 @@ public abstract class AbstractRace implements Race {
 		for (int i = 0; i < namesOnPage.size(); i++) {
 			String name = namesOnPage.get(i).ownText();
 			if (name.substring(0, 2).equals(name.substring(0, 2).toUpperCase())) {
+
 				names.add(namesOnPage.get(i).ownText());
 			}
 		}

@@ -27,7 +27,7 @@ public class Date {
 		}
 	}
 	public Date(String date) {
-		if (date.substring(2,3) != "-" && date.substring(5,6) != "-") {
+		if (!date.substring(2, 3).equals("-") && !date.substring(5, 6).equals("-")) {
 			this.day = Integer.parseInt(date.substring(0,2));
 			this.month = Integer.parseInt(date.substring(3,5));
 			this.year = Integer.parseInt(date.substring(6,10));
@@ -48,17 +48,6 @@ public class Date {
 		otherCal.set(otherDate.getYear(), otherDate.getMonth(),
 				otherDate.getDay());
 		return thisCal.after(otherCal) || this.equals(otherDate);
-//		return new Calendar.set(this.year, this.month, this.day)
-//				.after(new Calendar.set(otherDate.getYear(), otherDate.getMonth(),
-//						otherDate.getDay()) )|| this.equals(otherDate);
-//		if (this.year == otherDate.getYear()) {
-//			return  this.getMonth() - otherDate.getMonth() >= 0
-//					&& this.getYear() - otherDate.getYear() >= 0;
-//		} else if (this.year - otherDate.getYear() == 1 ) {
-//			return
-//		} else {
-//			return false;
-//		}
 	}
 
 	@Override
@@ -85,7 +74,7 @@ public class Date {
 				break;
 			}
 		}
-		System.out.println(monthAsLetters);
+
 		int monthAsInt = -1;
 		switch (monthAsLetters) {
 			case "January": monthAsInt = 1; break;
@@ -105,10 +94,7 @@ public class Date {
 		if (monthAsInt == -1) {
 			throw new IllegalArgumentException("Invalid month");
 		}
-
 		return new Date(Integer.parseInt(day), monthAsInt, Integer.parseInt(year));
-
-
 	}
 
 	@Override
@@ -116,21 +102,20 @@ public class Date {
 		return this.year * this.day / this.month;
 	}
 
-	public int getDay() {
+	private int getDay() {
 		return day;
 	}
 
-	public int getMonth() {
+	private int getMonth() {
 		return month;
 	}
 
-	public int getYear() {
+	private int getYear() {
 		return year;
 	}
 
 	@Override
 	public String toString() {
 		return String.format("%02d-%02d-%d", this.day, this.month, this.year);
-//		return  this.day + "-" + this.month + "-"  + this.year;
 	}
 }

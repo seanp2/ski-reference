@@ -18,7 +18,7 @@ public class AthleteUtils {
 	Document fispages;
 
 	
-	public AthleteUtils() {}
+	public AthleteUtils(){}
 
 
 	public static double minutesToSeconds(String time) {
@@ -53,7 +53,7 @@ public class AthleteUtils {
 	 * Visit https://data.fis-ski.com/alpine-skiing/fis-points-lists.html
 	 * which displays all of the time durations and the lists they correspond to
 	 * @param date the date
-	 * @return the FIS points list which the given date corresponds to
+	 * @return the FIS points list of which the given date corresponds to
 	 */
 	public int getPointsList(Date date) {
 		try {
@@ -72,11 +72,9 @@ public class AthleteUtils {
 		for (int i = 0; i < rows.size(); i++) {
 			if (i % 3 == 0 ) {
 				rowAccu[0] = rows.get(i).ownText();
-
 			}
 			else if (i % 3 == 1) {
 				rowAccu[1] = rows.get(i).ownText();
-
 			}
 			else if (i % 3 == 2) {
 				if (date.sameOrLaterThan(new Date(rowAccu[0], true)) && new Date(rowAccu[1], true).sameOrLaterThan(date)) {
@@ -90,12 +88,8 @@ public class AthleteUtils {
 				}
 			}
 		}
-
 		return 1;
-
 	}
-
-
 
 
 	public String  getRaceID(String url) {

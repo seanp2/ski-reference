@@ -12,10 +12,8 @@ public class TechRace extends AbstractRace {
 
 
 	/**
-	 * @param url url of the result on the FIS webpage
-	 * @param event event acronym (either "GS" ,or "SL")
-	 * @throws IllegalArgumentException
-	 * @throws IOException
+	 * @param page The document of the FIS result web page\
+	 * @throws IOException if the web page is invalid
 	 */
 //	public TechRace(String url, String event) throws IllegalArgumentException, IOException {
 	public TechRace(Document page) throws IllegalArgumentException, IOException {

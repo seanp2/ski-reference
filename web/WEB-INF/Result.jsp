@@ -353,10 +353,6 @@
                     ", '" + race.getResults().get(j).getLastfirstName() +" (" + race.getResults().get(j).getNation()
                     + "): " + race.getResults().get(j).getResult().getScore() + "' ,"
                     + color + "],\n");
-//        } else {
-//            out.print("[ " + bibAndScore.get(j)[0] + ",     " + bibAndScore.get(j)[1] +
-//                    ", '" + race.getResults().get(j).getLastfirstName() + "'" + ", null],\n");
-//        }
         }
         out.print("]);\n" +
                 "\n" +
@@ -383,7 +379,7 @@
                 "    </script>" + "<div  class =\"chart\" id=\"chart_div\" ></div>");
 
 
-        System.out.println(graph);
+
     %>
 
     <div id="infoi">

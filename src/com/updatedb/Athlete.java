@@ -48,7 +48,6 @@ public class Athlete {
 			disciplines.add(disciplinesOnPage.get(i).ownText());
 		}
 
-
 		ArrayList<Double> points = new ArrayList<>();
 		Elements positionsOnPage = bioPage.select("#results-body .justify-right");
 		for (int i = 0; i < positionsOnPage.size(); i++ ) {
@@ -65,12 +64,12 @@ public class Athlete {
 				}
 			}
 		}
-
 		for (int i = 0; i < dates.size(); i++) {
 			try {
 				allResults.add(new BioResult(dates.get(i), disciplines.get(i), points.get(i)));
 			}
 			catch(IndexOutOfBoundsException e) {
+				e.printStackTrace();
 
 			}
 		}
@@ -137,11 +136,9 @@ public class Athlete {
 		ArrayList<BioResult> racesByEvent = racesByDiscipline(eventAcronym);
 		ArrayList<Double> accuScores = new ArrayList<>();
 		ArrayList<Double> accuTotal = new ArrayList<>();
-
  		for (int j = 0; j < racesByEvent.size(); j++) {
 			BioResult result = racesByEvent.get(j);
 			accuTotal.add(result.getScore());
-
 			if (aUtil.getPointsList(result.getDate()) == pointsList - lastListDifference ||
 					aUtil.getPointsList(result.getDate()) == pointsList - lastListDifference - 1) {
 				if (result.getScore() < hiLo[0] && hiLo[0] != result.getScore() && hiLo[1] != result.getScore()) {

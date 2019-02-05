@@ -9,7 +9,9 @@ public class DateTest {
 
 	@Test
 	public void dateAsTest() {
-		assertEquals("", Date.monthAsLetters("April 03, 2017").toString());
+
+		assertEquals("03-04-2017", Date.monthAsLetters("April 03, 2017").toString());
+
 	}
 
 }

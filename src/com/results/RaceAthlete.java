@@ -16,15 +16,6 @@ public class RaceAthlete {
 	private  double previousPoints;
 
 
-
-
-
-//	private final String run1Time;
-//	private final String run2Time;
-
-//	private final double score;
-	
-
 	public RaceAthlete(int competitorID, String lastfirstName,
 			int birthyear, String nation, Result result)
 			throws IllegalArgumentException {

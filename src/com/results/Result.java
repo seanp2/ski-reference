@@ -1,6 +1,5 @@
 package com.results;
 
-import java.util.ArrayList;
 
 public interface Result {
 

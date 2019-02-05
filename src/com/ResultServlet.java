@@ -14,8 +14,6 @@ import java.io.PrintWriter;
 
 public class ResultServlet extends HttpServlet {
 
-	public static String hostName = "http://localhost:8080";
-
 	/**
 	 * When the user enters a url, the response is redirected back to this
 	 * servlet and changes the raceid field such that it is the race id
@@ -27,8 +25,6 @@ public class ResultServlet extends HttpServlet {
 	 */
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		TechRace myRace = null;
-		PrintWriter out = response.getWriter();
 		String raceid = request.getParameter("raceid");
 		String event = request.getParameter("event");
 		try {
@@ -40,7 +36,7 @@ public class ResultServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		} catch (NumberFormatException e) {
-			// raceid is user entered URL of race
+			// Allows user to enter race id  instead of result page URL
 			try {
 				raceid = new AthleteUtils().getRaceID(raceid);
 			} catch (Exception s) {

@@ -62,5 +62,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" scope="TEST" name="apache-tomcat-8.5" level="project" />
+    <orderEntry type="library" name="jasypt" level="project" />
   </component>
 </module>

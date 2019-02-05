@@ -1,8 +1,5 @@
 package com.results;
-
-import com.results.AbstractRace;
 import org.jsoup.nodes.Document;
-
 import java.io.IOException;
 
 /**
@@ -14,9 +11,8 @@ public class SpeedRace extends AbstractRace {
 
 	/**
 	 *
-	 * @param url url of the result on the FIS webpage
-	 * @param event event acronym (either "GS" ,or "SL")
-	 * @throws IOException
+	 * @param page The document of the FIS result web page
+	 * @throws IOException if the web page is invalid
 	 */
 //	public SpeedRace(String url, String event) throws IOException {
 	public SpeedRace(Document page) throws IOException {
