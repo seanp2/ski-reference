@@ -11,15 +11,16 @@ import java.util.ArrayList;
 
 
 public abstract class AbstractRace implements Race {
-	private Document page;
+	protected Document page;
 	protected Date date;
 	protected ArrayList<RaceAthlete> results;
 	private double penalty;
 	private boolean twoRunRace;
-	private ArrayList<String> competitorIDs;
+	protected ArrayList<String> competitorIDs;
+	protected ArrayList<String> names;
 	private String event;
 	private String venue;
-	private ArrayList[] dnfs;
+	protected ArrayList<RaceAthlete> dnfs;
 
 
 
@@ -37,7 +38,7 @@ public abstract class AbstractRace implements Race {
 		this.date = Date.monthAsLetters(dateAsText);
 		this.competitorIDs = new ArrayList<>();
 		initCompetitorIDS();
-		ArrayList<String> names = this.getNames();
+		this.names = this.getNames();
 		this.results = new ArrayList<>();
 		this.initAthletes( names, competitorIDs);
 		this.penalty = this.results.get(0).getResult().getScore();
@@ -135,6 +136,19 @@ public abstract class AbstractRace implements Race {
 		return racersWhoScored;
 	}
 
+	/**
+	 * This method must be abstract because combined times have different
+	 * HTML class names in tech races vs speed races.
+	 *
+	 *
+	 * Creates a list of type Results representing all of individual results in the race.
+	 * The list is sorted by race rank.
+	 */
+
+	protected abstract ArrayList<Result> initResults(ArrayList<String> bibs,
+	                                                 ArrayList<String> differences,
+	                                                 ArrayList<String> resultScores);
+
 
 	/**
 	 * Initializes the results of race.
@@ -150,11 +164,8 @@ public abstract class AbstractRace implements Race {
 		ArrayList<String> bibs = new ArrayList<>();
 		ArrayList<String> birthYears = new ArrayList<>();
 		ArrayList<String> countries = new ArrayList<>();
-		ArrayList<String> run1Times = new ArrayList<>();
-		ArrayList<String> run2Times = new ArrayList<>();
-		ArrayList<String> combinedTimes = new ArrayList<>();
-		ArrayList<String> diffTimes = new ArrayList<>();
-		ArrayList<String> fisPoints = new ArrayList<>();
+		ArrayList<String> diffTimes;
+		ArrayList<String> fisPoints;
 
 		Elements bibOnPage = page.select(".g-sm-1.gray");
 		for (Element bibDiv: bibOnPage) {
@@ -174,75 +185,29 @@ public abstract class AbstractRace implements Race {
 				countries.add(countryNamesOnPage.get(i).ownText());
 			}
 		}
-
-		Elements run1OnPage = page.select("#events-info-results .hidden-xs:nth-child(7)");
-		for (Element run1Div : run1OnPage) {
-			run1Times.add(run1Div.ownText());
-			if (!twoRunRace) {
-				combinedTimes.add(run1Div.ownText());
-			}
-		}
-
-		if (twoRunRace) {
-			Elements run2OnPage = page.select("#events-info-results .hidden-xs:nth-child(8)");
-			for (Element run2Div : run2OnPage) {
-				run2Times.add(run2Div.ownText());
-			}
-
-			Elements combinedTimesOnPage = page.select("#events-info-results .hidden-xs:nth-child(9)");
-			for (int i = 0; i < combinedTimesOnPage.size(); i++) {
-				combinedTimes.add(combinedTimesOnPage.get(i).ownText());
-			}
-		}
-
-		Elements diffTimesOnPage = page.select("#events-info-results .g-xs-5");
-		// The winner has a differential time of 0.0 seconds
-		// But on a FIS result page is listed as an empty string
-		for (int i = 0; i < diffTimesOnPage.size(); i++) {
-			if (i == 0) {
-				diffTimes.add("0.00");
-
-			} else {
-				diffTimes.add(diffTimesOnPage.get(i).ownText().substring(1));
-			}
-		}
-
-		Elements fisPointsOnPage = page.select("#events-info-results .g-xs-3.justify-right");
-		for (int i = 0; i < fisPointsOnPage.size(); i++) {
-
-			fisPoints.add(fisPointsOnPage.get(i).ownText());
-		}
+		diffTimes = this.getDifferences();
+		fisPoints = this.getResultPoints();
+		ArrayList<Result> athleteFinishes = this.initResults(bibs, diffTimes, fisPoints);
 		//The size of combinedTimes is the number of racers who have
 		//successfully finished the race
-		for (int i = 0; i < combinedTimes.size(); i++) {
-			Finish resultOfAthlete;
-			if (twoRunRace) {
-				 resultOfAthlete = new Finish(i + 1, Integer.parseInt(bibs.get(i)),
-						 AthleteUtils.minutesToSeconds(run1Times.get(i)), AthleteUtils.minutesToSeconds(run2Times.get(i)),
-						 AthleteUtils.minutesToSeconds(diffTimes.get(i)), Double.parseDouble(fisPoints.get(i)));
-			} else {
-				resultOfAthlete = new Finish(i + 1, Integer.parseInt(bibs.get(i)),
-						AthleteUtils.minutesToSeconds(run1Times.get(i)),
-						AthleteUtils.minutesToSeconds(diffTimes.get(i)), Double.parseDouble(fisPoints.get(i)));
-			}
+		for (int i = 0; i < athleteFinishes.size(); i++) {
 			try {
 				RaceAthlete athlete = new RaceAthlete(Integer.parseInt(competitorIDs.get(i)), names.get(i),
-						Integer.parseInt(birthYears.get(i)), countries.get(i), resultOfAthlete);
+						Integer.parseInt(birthYears.get(i)), countries.get(i), athleteFinishes.get(i));
 				this.results.add(athlete);
-			} catch  (NumberFormatException e) {
+			} catch  (NumberFormatException | IndexOutOfBoundsException e) {
 				e.printStackTrace();
 			}
 		}
-		this.dnfs = new ArrayList[] {new ArrayList<RaceAthlete>(), new ArrayList<RaceAthlete>()};
-		for (int i = combinedTimes.size(); i < competitorIDs.size(); i++) {
-			DNF result  = new DNF(Integer.parseInt(bibs.get(i)), 1);
-			RaceAthlete athlete = new RaceAthlete(Integer.parseInt(competitorIDs.get(i)), names.get(i),
-					Integer.parseInt(birthYears.get(i)), countries.get(i), result);
-			this.results.add(athlete);
-			this.dnfs[0].add(athlete);
+		this.dnfs = new ArrayList();
+		for (int i = 0; i < athleteFinishes.size(); i++) {
+			if (athleteFinishes.get(i) instanceof DNF) {
+				this.dnfs.add(results.get(i));
+			}
 		}
 	}
 
+	@Override
 	public Double[] getScoreMinusPoints() {
 		Double[] scoreMinusPoints = new Double[results.size()];
 		for (int i = 0; i < this.results.size(); i++) {
@@ -301,11 +266,9 @@ public abstract class AbstractRace implements Race {
 
 	@Override
 	public double getFinishRate() {
-		int totalDNFS = 0;
-		for (ArrayList<RaceAthlete> dnflist : dnfs) {
-			totalDNFS += dnflist.size();
-		}
-		return (double) (results.size() - totalDNFS) / results.size();
+
+
+		return (double) (results.size() - dnfs.size()) / results.size();
 	}
 
 
@@ -335,6 +298,9 @@ public abstract class AbstractRace implements Race {
 	}
 
 
+	/**
+	 * Retrieve all of the competitor ids of the athletes from the results page
+	 */
 	private void initCompetitorIDS() {
 		Elements rows = this.page.select(".table-row");
 		for (int i = 0; i < rows.size(); i++) {
@@ -349,7 +315,9 @@ public abstract class AbstractRace implements Race {
 		}
 	}
 
-
+	/**
+	 * Retrieve all of the names ids of the athletes from the results page
+	 */
 	private ArrayList<String> getNames() {
 		ArrayList<String> names = new ArrayList<>();
 		Elements namesOnPage = page.select(".justify-left.bold");
@@ -363,4 +331,28 @@ public abstract class AbstractRace implements Race {
 		return names;
 	}
 
+	private ArrayList<String> getResultPoints() {
+		ArrayList<String> fisPoints = new ArrayList<>();
+		Elements fisPointsOnPage = page.select("#events-info-results .g-xs-3.justify-right");
+		for (int i = 0; i < fisPointsOnPage.size(); i++) {
+			fisPoints.add(fisPointsOnPage.get(i).ownText());
+		}
+		return fisPoints;
+	}
+
+	private ArrayList<String> getDifferences() {
+		ArrayList<String> diffTimes = new ArrayList<>();
+		Elements diffTimesOnPage = page.select("#events-info-results .g-xs-5");
+		// The winner has a differential time of 0.0 seconds
+		// But on a FIS result page is listed as an empty string
+		for (int i = 0; i < diffTimesOnPage.size(); i++) {
+			if (i == 0) {
+				diffTimes.add("0.00");
+
+			} else {
+				diffTimes.add(diffTimesOnPage.get(i).ownText().substring(1));
+			}
+		}
+		return diffTimes;
+	}
 }

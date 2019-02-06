@@ -3,34 +3,36 @@ package com.results;
 
 public interface Result {
 
-
 	/**
-	 * Gets a list of all results from the first run. They will be returned as Strings
-	 * in order to account for the DNF result, which represents that an athlete did not
-	 * finish the course
-	 * @return the list of first run results
+	 *
+	 * @return the combined time of the result
 	 */
-	String  getFirstRun();
-
-
-	/**
-	 * Gets a list of all results from the second run. They will be returned as Strings
-	 * in order to account for the DNF result, which represents that an athlete did not
-	 * finish the course
-	 * @return the list of second run results
-	 */
-	String getSecondRun();
-
-
 	String getCombined();
 
+	/**
+	 *
+	 * @return the race score of the result
+	 */
 	double getScore();
 
+	/**
+	 *
+	 * @return the bib number of the athlete corresponding to this result
+	 */
 	int getBib();
 
 
+	/**
+	 *
+	 * @return the difference between the world rank points of the athlete corresponding to this result
+	 * and the race result points of this finish
+	 */
 	double getDifference();
 
+	/**
+	 *
+	 * @return the ranking of this result
+	 */
 	String getRank();
 
 

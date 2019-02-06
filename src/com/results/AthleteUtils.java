@@ -2,20 +2,15 @@ package com.results;
 import com.util.Date;
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import java.io.BufferedReader;
-import java.io.CharArrayReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class AthleteUtils {
-	Document fispages;
+	private Document fispages;
 
 	
 	public AthleteUtils(){}
@@ -62,7 +57,7 @@ public class AthleteUtils {
 			e.printStackTrace();
 		}
 		assert fispages != null;
-//		Elements rows = fispages.select(".info_clip , #fis-points-list-body .g-xs-24");
+
 		Elements rows = fispages.select("#fis-points-list-body .g-lg-3 , :nth-child(6) .split-row__item:nth-child(1) " +
 				":nth-child(2) a, #fis-points-list-body .g-lg-3");
 		// index mod 3 = 0 of rows is a start date of a list

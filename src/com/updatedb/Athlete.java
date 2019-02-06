@@ -22,8 +22,8 @@ public class Athlete {
 	private ArrayList<BioResult> allResults;
 
 	/**
-	 * Creates an athlete and keeps track of all of their results.
-	 *
+	 * Represents an FIS alpine ski racing athlete.
+	 * Keeps track of all FIS races the athlete has ever competed in
 	 * @param competitorID competitor id of the athlete
 	 * @throws IOException
 	 */

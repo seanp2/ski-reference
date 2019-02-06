@@ -1,40 +1,21 @@
 package com.results;
 
+
+/**
+ * Represents a result in which an athlete did not finish the race
+ */
 public class DNF implements Result {
 	int bib;
-	int runNotFinished;
 
-	public DNF(int bib, int runNotFinished) {
+	public DNF(int bib) {
 		this.bib = bib;
-		this.runNotFinished = runNotFinished;
 	}
 
-
-	@Override
-	public String getFirstRun() {
-		if (runNotFinished == 1) {
-			return "DNF";
-		} else {
-			return "NA";
-		}
-	}
-
-	@Override
-	public String getSecondRun() {
-		if (runNotFinished == 2) {
-			return "DNF";
-		} else {
-			return "NA";
-		}
-	}
 
 	@Override
 	public String getCombined() {
 		return "DNF";
 	}
-
-
-
 
 
 	@Override

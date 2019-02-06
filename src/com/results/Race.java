@@ -58,6 +58,11 @@ public interface Race {
 	 */
 	RaceAthlete attackFromTheBack();
 
-
+	/**
+	 * Creates an array consisting of the difference between each athletes world rank points
+	 * and race result points.
+	 * @return The array consisting of the difference between each athletes world rank points
+	 * 	 and race result points ordered by race ranking.
+	 */
 	Double[] getScoreMinusPoints();
 }

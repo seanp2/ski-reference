@@ -1,8 +1,6 @@
 package com.updatedb;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -27,19 +25,21 @@ public class DBconnection {
 
 	// create properties
 	private Properties getProperties() {
-		Properties configProp = new Properties();
-		try {
-			input = new FileInputStream("resources/config.properties");
-			configProp.load(input);
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-		String USERNAME = configProp.getProperty("dbuser");
-		String PASSWORD = configProp.getProperty("dbpassword");
+//		Properties configProp = new Properties();
+//		try {
+//			input = new FileInputStream("resources/config.properties");
+//			configProp.load(input);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		String USERNAME = configProp.getProperty("dbuser");
+//		String PASSWORD = configProp.getProperty("dbpassword");
 		if (properties == null) {
 			properties = new Properties();
-			properties.setProperty("user", USERNAME);
-			properties.setProperty("password", PASSWORD);
+			properties.setProperty("user", "seanp2");
+			properties.setProperty("password", "Yelpik93");
+//			properties.setProperty("user", USERNAME);
+//			properties.setProperty("password", PASSWORD);
 			properties.setProperty("MaxPooledStatements", MAX_POOL);
 		}
 		return properties;

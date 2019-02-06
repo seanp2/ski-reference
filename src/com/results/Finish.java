@@ -1,46 +1,49 @@
 package com.results;
 
+/**
+ * Represents a result where an athlete sucessfully completed the race
+ */
+public abstract class Finish implements Result {
+	private int rank;
+	private double score;
+	private double difference;
+	private int bib;
 
-public class Finish implements Result {
-	int rank;
-	double run1Time;
-	double run2Time;
-	double score;
-	double difference;
-	int bib;
 
-	public Finish(int rank, int bib, double run1Time, double run2Time, double difference, double score) {
+	/**
+	 *
+	 * @param rank The final ranking of the finish
+	 * @param bib The bib (starting place) of the finish
+	 * @param difference The difference of time between the winner of the race and this results
+	 *                   combined time
+	 * @param score the FIS race result score of the result
+	 */
+	Finish(int rank, int bib, double difference, double score) {
 		this.rank = rank;
 		this.bib = bib;
-		this.run1Time = run1Time;
-		this.run2Time = run2Time;
 		this.difference = difference;
 		this.score = score;
 	}
 
-	public Finish(int rank, int bib, double run1Time,  double difference, double score) {
-		this.rank = rank;
-		this.bib = bib;
-		this.run1Time = run1Time;
-		this.run2Time = 0.0;
-		this.difference = difference;
-		this.score = score;
-	}
+
+
+	/**
+	 * Returns a description of the individual runs of the result as a string.
+	 * This will differ for speed and tech finishes, because they have a different
+	 * number of runs for each race.
+	 */
+	protected abstract String getRunsAsString();
 
 	@Override
-	public String getFirstRun() {
-		return run1Time + "";
-	}
+	public abstract String getCombined();
 
 	@Override
-	public String getSecondRun() {
-		return run2Time + "";
+	public String toString() {
+		return "Place: " + rank + " from:" + bib + this.getRunsAsString() + " Combined:"
+				+ this.getCombined() + " difference = " + difference + " Score: " + score;
 	}
 
-	@Override
-	public String getCombined() {
-		return run1Time + run2Time + "";
-	}
+
 
 	@Override
 	public double getScore() {
@@ -51,11 +54,6 @@ public class Finish implements Result {
 	public int getBib() {
 		return this.bib;
 	}
-
-	@Override
-	public String toString() {
-		return "Place: " + rank + " from:" + bib + " Run1:" + this.run1Time + " Run2:" + this.run2Time + " Combined:" + this.getCombined() + " difference = " + difference + " Score: " + score;
- 	}
 
 	@Override
 	public double getDifference() {

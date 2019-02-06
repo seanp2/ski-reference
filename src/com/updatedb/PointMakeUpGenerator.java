@@ -18,7 +18,7 @@ public class PointMakeUpGenerator {
 	private static int endList = 277;
 	private static String[] pointsNames = new String[]{"SL", "GS" , "SG" , "DH"};
 	private static int listsBackForIncrease = 13;
-	private static int startAtAthleteIndex = 10000;
+	private static int startAtAthleteIndex = 0;
 
 
 	/**
