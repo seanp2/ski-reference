@@ -40,9 +40,9 @@ public class SpeedRace extends AbstractRace {
 			results.add(resultOfAthlete);
 			}
 
-		this.dnfs = new ArrayList();
 		for (int i = combinedTimes.size(); i < competitorIDs.size(); i++) {
 			DNF result = new DNF(Integer.parseInt(bibs.get(i)));
+
 			results.add(result);
 		}
 		return results;

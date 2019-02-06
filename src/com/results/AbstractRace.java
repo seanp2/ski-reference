@@ -17,10 +17,10 @@ public abstract class AbstractRace implements Race {
 	private double penalty;
 	private boolean twoRunRace;
 	protected ArrayList<String> competitorIDs;
-	protected ArrayList<String> names;
+	private ArrayList<String> names;
 	private String event;
 	private String venue;
-	protected ArrayList<RaceAthlete> dnfs;
+	private ArrayList<RaceAthlete> dnfs;
 
 
 
@@ -37,10 +37,10 @@ public abstract class AbstractRace implements Race {
 		String dateAsText = page.select("time span").first().ownText();
 		this.date = Date.monthAsLetters(dateAsText);
 		this.competitorIDs = new ArrayList<>();
-		initCompetitorIDS();
+		this.initCompetitorIDS();
 		this.names = this.getNames();
 		this.results = new ArrayList<>();
-		this.initAthletes( names, competitorIDs);
+		this.initAthletes();
 		this.penalty = this.results.get(0).getResult().getScore();
 	}
 
@@ -157,52 +157,26 @@ public abstract class AbstractRace implements Race {
 	 * A RaceAthlete contains all relevant information such as Name, result information,
 	 * rank, and score.
 	 * The resulting list of RaceAthlete is sorted by rank of racers in the competition.
-	 * @param names all of the names of the athletes
-	 * @param competitorIDs all of the competitor id's of the athletes
 	 */
-	private void initAthletes( ArrayList<String> names, ArrayList<String> competitorIDs) {
-		ArrayList<String> bibs = new ArrayList<>();
-		ArrayList<String> birthYears = new ArrayList<>();
-		ArrayList<String> countries = new ArrayList<>();
-		ArrayList<String> diffTimes;
-		ArrayList<String> fisPoints;
-
-		Elements bibOnPage = page.select(".g-sm-1.gray");
-		for (Element bibDiv: bibOnPage) {
-			bibs.add(bibDiv.ownText());
-		}
-
-		Elements birthYearsOnPage = page.select(".justify-sb :nth-child(5)");
-		for (int i = 1; i < birthYearsOnPage.size();i++){
-			birthYears.add(birthYearsOnPage.get(i).ownText());
-		}
-
-		// The first 5 countries that come up with this selector are those of race officials
-		// Thus, they should not be considered when initializing the athletes
-		Elements countryNamesOnPage = page.select(".country__name-short");
-		for (int i = 0; i < countryNamesOnPage.size(); i ++) {
-			if (i > 4 ) {
-				countries.add(countryNamesOnPage.get(i).ownText());
-			}
-		}
-		diffTimes = this.getDifferences();
-		fisPoints = this.getResultPoints();
+	private void initAthletes() {
+		ArrayList<String> names = this.getNames();
+		ArrayList<String> bibs = this.getBibs();
+		ArrayList<String> birthYears = this.getBirthyears();
+		ArrayList<String> countries = this.getCountries();
+		ArrayList<String> diffTimes = this.getDifferences();
+		ArrayList<String> fisPoints = this.getResultPoints();
+		this.dnfs = new ArrayList<>();
 		ArrayList<Result> athleteFinishes = this.initResults(bibs, diffTimes, fisPoints);
-		//The size of combinedTimes is the number of racers who have
-		//successfully finished the race
 		for (int i = 0; i < athleteFinishes.size(); i++) {
 			try {
 				RaceAthlete athlete = new RaceAthlete(Integer.parseInt(competitorIDs.get(i)), names.get(i),
 						Integer.parseInt(birthYears.get(i)), countries.get(i), athleteFinishes.get(i));
 				this.results.add(athlete);
+				if (athleteFinishes.get(i) instanceof DNF) {
+					this.dnfs.add(results.get(i));
+				}
 			} catch  (NumberFormatException | IndexOutOfBoundsException e) {
 				e.printStackTrace();
-			}
-		}
-		this.dnfs = new ArrayList();
-		for (int i = 0; i < athleteFinishes.size(); i++) {
-			if (athleteFinishes.get(i) instanceof DNF) {
-				this.dnfs.add(results.get(i));
 			}
 		}
 	}
@@ -217,7 +191,6 @@ public abstract class AbstractRace implements Race {
 			}
 			if ( athlete.getPreviousPoints() != 990) {
 				scoreMinusPoints[i] = athlete.getResult().getScore() - athlete.getPreviousPoints();
-
 			}
 		}
 		return scoreMinusPoints;
@@ -266,8 +239,6 @@ public abstract class AbstractRace implements Race {
 
 	@Override
 	public double getFinishRate() {
-
-
 		return (double) (results.size() - dnfs.size()) / results.size();
 	}
 
@@ -331,6 +302,58 @@ public abstract class AbstractRace implements Race {
 		return names;
 	}
 
+	/**
+	 * Retrieves all of the bib numbers of athletes
+	 * Bib numbers represent the athletes start order
+	 * @return an array list of the bibs of all of the athletes ordered by
+	 *         race rank
+	 */
+	private ArrayList<String> getBibs() {
+		ArrayList<String> bibs = new ArrayList<>();
+		Elements bibOnPage = page.select(".g-sm-1.gray");
+		for (Element bibDiv: bibOnPage) {
+			bibs.add(bibDiv.ownText());
+		}
+		return bibs;
+	}
+
+	/**
+	 * Retrieves all of the countries that athletes are from
+	 * @return an array list of the countries the athletes are from ordered by
+	 *         race rank
+	 */
+	private ArrayList<String> getCountries() {
+		// The first 5 countries that come up with this selector are those of race officials
+		// Thus, they should not be considered when initializing the athletes
+		ArrayList<String> countries = new ArrayList<>();
+		Elements countryNamesOnPage = page.select(".country__name-short");
+		for (int i = 0; i < countryNamesOnPage.size(); i ++) {
+			if (i > 4 ) {
+				countries.add(countryNamesOnPage.get(i).ownText());
+			}
+		}
+		return countries;
+	}
+
+	/**
+	 * Retrieves the birth years of all athletes
+	 * @return an array list of the birth years of all of the athletes ordered by
+	 *         race rank
+	 */
+	private ArrayList<String> getBirthyears() {
+		ArrayList<String>  birthYears = new ArrayList<>();
+		Elements birthYearsOnPage = page.select(".justify-sb :nth-child(5)");
+		for (int i = 1; i < birthYearsOnPage.size();i++){
+			birthYears.add(birthYearsOnPage.get(i).ownText());
+		}
+		return birthYears;
+	}
+
+	/**
+	 * Retrieves the race result score of all athletes
+	 * @return an array list of the race result score of all of the athletes ordered by
+	 * 	        race rank
+	 */
 	private ArrayList<String> getResultPoints() {
 		ArrayList<String> fisPoints = new ArrayList<>();
 		Elements fisPointsOnPage = page.select("#events-info-results .g-xs-3.justify-right");

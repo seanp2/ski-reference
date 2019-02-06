@@ -106,16 +106,6 @@ public class RaceTest {
 		}
 	}
 
-		@Test
-		public void test7() {
-			try {
-				Document page = Jsoup.connect("https://www.fis-ski.com/DB/general/results.html?" +
-						"sectorcode=AL&competitorid=204800&raceid=95931").get();
-				TechRace sugarloaf2017 = new TechRace(page);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 
 
 

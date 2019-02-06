@@ -35,8 +35,6 @@ public class TechRace extends AbstractRace {
 					AthleteUtils.minutesToSeconds(differences.get(i)), Double.parseDouble(resultScores.get(i)));
 			results.add(resultOfAthlete);
 		}
-
-		this.dnfs = new ArrayList();
 		for (int i = combinedTimes.size(); i < competitorIDs.size(); i++) {
 			DNF result = new DNF(Integer.parseInt(bibs.get(i)));
 			results.add(result);
@@ -84,7 +82,6 @@ public class TechRace extends AbstractRace {
 			RaceAthlete athlete = this.results.get(i);
 			Result result = this.getResults().get(i).getResult();
 			if (result instanceof TechFinish) {
-
 				csv += result.getRank() + " , " +
 						result.getBib() + ", " +
 						athlete.getCompetitorID() + " , " +
@@ -98,6 +95,7 @@ public class TechRace extends AbstractRace {
 						athlete.getPreviousPoints() + " , " +
 						result.getScore() + ",\n";
 			} else {
+				// Result is of Type DNF, first run and second run info is unavailable
 				csv += " , "+ result.getBib() + ", " +
 						athlete.getCompetitorID() + " , " +
 						athlete.getLastfirstName() + " , " +

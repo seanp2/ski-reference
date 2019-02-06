@@ -28,6 +28,7 @@ public class AthleteUtils {
 	}
 
 
+
 	public static String secondsToMinutes(String time) {
 		try {
 			double inseconds = Double.parseDouble(time);
@@ -58,7 +59,8 @@ public class AthleteUtils {
 		}
 		assert fispages != null;
 
-		Elements rows = fispages.select("#fis-points-list-body .g-lg-3 , :nth-child(6) .split-row__item:nth-child(1) " +
+		Elements rows = fispages.select("#fis-points-list-body .g-lg-3 , :nth-child(6) " +
+				".split-row__item:nth-child(1) " +
 				":nth-child(2) a, #fis-points-list-body .g-lg-3");
 		// index mod 3 = 0 of rows is a start date of a list
 		// index mod 3 = 1 of rows is an end date of a list
@@ -74,9 +76,8 @@ public class AthleteUtils {
 			else if (i % 3 == 2) {
 				if (date.sameOrLaterThan(new Date(rowAccu[0], true)) && new Date(rowAccu[1], true).sameOrLaterThan(date)) {
 					String pointsListAsMalformedString = rows.get(i).attr("onclick").substring(42);
-					int pointsList = Integer.parseInt(pointsListAsMalformedString
+					return Integer.parseInt(pointsListAsMalformedString
 							.substring(0, pointsListAsMalformedString.length() - 2));
-					return pointsList;
 				}
 				else {
 					rowAccu = new String[2];
@@ -87,6 +88,11 @@ public class AthleteUtils {
 	}
 
 
+	/**
+	 *
+	 * @param url the url of the FIS result on the FIS page
+	 * @return the race id of the race
+	 */
 	public String  getRaceID(String url) {
 		String raceid = "-1";
 		Scanner scanner = new Scanner(new StringReader(url));
