@@ -6,42 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d04c4da0-bf64-48e4-a869-476c7695b8e2" name="Default Changelist" comment="Small Updates">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/AbstractRace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/AbstractRace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/DNF.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/DNF.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/Finish.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/Finish.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/Result.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/SpeedRace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/SpeedRace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/TechRace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/results/TechRace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/updatedb/DBconnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiAnalysisSite_war_exploded/WEB-INF/classes/com/updatedb/DBconnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SkiReference/SkiReference.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SkiReference/SkiReference.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/AbstractRace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/AbstractRace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/AthleteUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/AthleteUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/DNF.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/DNF.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/Finish.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/Finish.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/Result.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/SpeedRace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/SpeedRace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/TechRace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/results/TechRace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/BioResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/BioResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/DBconnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/DBconnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/PointMakeUpGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SkiAnalysisSite/com/updatedb/PointMakeUpGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/SkiAnalysisSite/com/results/RaceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/SkiAnalysisSite/com/results/RaceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/config.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/AthleteUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/AthleteUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/DNF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/DNF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/Finish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/Finish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/Race.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/Race.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/SpeedRace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/SpeedRace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/results/TechRace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/results/TechRace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/updatedb/Athlete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/updatedb/Athlete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/updatedb/BioResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/updatedb/BioResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/updatedb/DBconnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/updatedb/DBconnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/updatedb/PointMakeUpGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/updatedb/PointMakeUpGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/results/RaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/results/RaceTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="d04c4da0-bf64-48e4-a869-476c7695b8e2" name="Default Changelist" comment="Small Updates" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -483,7 +448,7 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="740" />
@@ -521,24 +486,6 @@
             </path>
             <path>
               <item name="SkiAnalysisSite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkiAnalysisSite" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkiAnalysisSite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkiAnalysisSite" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkiAnalysisSite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkiAnalysisSite" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="updatedb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkiAnalysisSite" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -555,7 +502,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549428305282" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549428315704" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Change SQL Dialect" value="GenericSQL&#10;MySQL" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
@@ -965,7 +912,7 @@
       <workItem from="1548198982035" duration="516000" />
       <workItem from="1548355450500" duration="3711000" />
       <workItem from="1549396175447" duration="11178000" />
-      <workItem from="1549425818998" duration="2333000" />
+      <workItem from="1549425818998" duration="2789000" />
     </task>
     <task id="LOCAL-00001" summary="small updates">
       <created>1543549447425</created>
@@ -1024,10 +971,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="507264000" />
+    <option name="totallyTimeSpent" value="507720000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="740" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="740" extended-state="1" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49902153" visible="true" weight="0.33198708" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
