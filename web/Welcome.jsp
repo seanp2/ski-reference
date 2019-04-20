@@ -29,6 +29,7 @@
 %>
 <div align="center">
     <img src="sean-2.png" height="300" style="border-radius:2px">
+
     <div class = welcomeBlurb>
         Search for any FIS alpine race to see stats, graphs, and which athletes scored.
         <br>

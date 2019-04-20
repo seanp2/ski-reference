@@ -25,21 +25,11 @@ public class DBconnection {
 
 	// create properties
 	private Properties getProperties() {
-//		Properties configProp = new Properties();
-//		try {
-//			input = new FileInputStream("resources/config.properties");
-//			configProp.load(input);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		String USERNAME = configProp.getProperty("dbuser");
-//		String PASSWORD = configProp.getProperty("dbpassword");
+
 		if (properties == null) {
 			properties = new Properties();
-			properties.setProperty("user", "seanp2");
-			properties.setProperty("password", "Yelpik93");
-//			properties.setProperty("user", USERNAME);
-//			properties.setProperty("password", PASSWORD);
+			properties.setProperty("user", "seanp1");
+			properties.setProperty("password", "Wanderu59");
 			properties.setProperty("MaxPooledStatements", MAX_POOL);
 		}
 		return properties;

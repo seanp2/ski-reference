@@ -11,6 +11,9 @@ public class BioResult {
 	private Date raceDate;
 	private String discipline;
 	private double score;
+	private String venue;
+	private String rank;
+	private String raceID;
 
 	/**
 	 *
@@ -19,10 +22,13 @@ public class BioResult {
 	 * @param score athletes race score at the race
 	 */
 	public BioResult(Date raceDate,
-	                 String discipline, double score) {
+	                 String discipline, String venue, String rank, double score, String raceID) {
 		this.raceDate = raceDate;
 		this.discipline = discipline;
 		this.score = score;
+		this.venue = venue;
+		this.rank = rank;
+		this.raceID = raceID;
 	}
 
 	/**
@@ -48,6 +54,15 @@ public class BioResult {
 	public String getDiscipline() {
 		return discipline;
 	}
+
+	public String getDescription() {
+		return this.venue + " [" + this.discipline + "] Rank: " + this.rank + " FIS points: " + this.score;
+	}
+
+	public String getRaceID() {
+		return this.raceID;
+	}
+
 
 
 }

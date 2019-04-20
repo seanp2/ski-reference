@@ -12,11 +12,61 @@
         <servlet-name>result</servlet-name>
         <servlet-class>com.ResultServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>trackingServlet</servlet-name>
+        <servlet-class>com.TrackingServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>removeTrackingServlet</servlet-name>
+        <servlet-class>com.RemoveTrackingServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>removeTracking</servlet-name>
+        <jsp-file>/RemoveTracking.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>removeTrackingError</servlet-name>
+        <jsp-file>/RemoveTrackingError.jsp</jsp-file>
+    </servlet>
+
+    <servlet>
+        <servlet-name>removeTrackingPost</servlet-name>
+        <jsp-file>/RemoveTrackingPost.jsp</jsp-file>
+    </servlet>
+    
+   
+
+    
+    <servlet>
+        <servlet-name>tracking</servlet-name>
+        <jsp-file>/Tracking.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>trackingPost</servlet-name>
+        <jsp-file>/TrackingPost.jsp</jsp-file>
+    </servlet>
     
     <servlet>
         <servlet-name>welcome</servlet-name>
         <jsp-file>/Welcome.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>trackingError</servlet-name>
+        <jsp-file>/TrackingError.jsp</jsp-file>
+    </servlet>
+
+    <servlet>
+        <servlet-name>confirmTrackingServlet</servlet-name>
+        <servlet-class>com.ConfirmTrackingServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>confirmTrackingJSP</servlet-name>
+        <jsp-file>/ConfirmTracking.jsp</jsp-file>
+    </servlet>
+    
 
 
 
@@ -24,11 +74,51 @@
         <servlet-name>resultdisplay</servlet-name>
         <jsp-file>/Result.jsp</jsp-file>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>trackingServlet</servlet-name>
+        <url-pattern>/tracking</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>trackingError</servlet-name>
+        <url-pattern>/trackingError</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>removeTrackingError</servlet-name>
+        <url-pattern>/removeTrackingError</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>trackingPost</servlet-name>
+        <url-pattern>/postTracking</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>removeTrackingPost</servlet-name>
+        <url-pattern>/removeTrackingPost</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>removeTrackingServlet</servlet-name>
+        <url-pattern>/removeTracking</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>removeTracking</servlet-name>
+        <url-pattern>/removeTrackingJSP</url-pattern>
+    </servlet-mapping>
     
     <servlet-mapping>
         <servlet-name>welcome</servlet-name>
         <url-pattern>/welcome</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>tracking</servlet-name>
+        <url-pattern>/trackingJSP</url-pattern>
+    </servlet-mapping>
+
+
 
     <servlet-mapping>
         <servlet-name>resultdisplay</servlet-name>
@@ -39,10 +129,15 @@
         <servlet-name>result</servlet-name>
         <url-pattern>/ResultSearch</url-pattern>
     </servlet-mapping>
-
-
-
-
-
+    
+    <servlet-mapping>
+        <servlet-name>confirmTrackingServlet</servlet-name>
+        <url-pattern>/confirmTracking</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>confirmTrackingJSP</servlet-name>
+        <url-pattern>/confirmJSP</url-pattern>
+    </servlet-mapping>
 
 </web-app>

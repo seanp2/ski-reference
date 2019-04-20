@@ -1,5 +1,6 @@
 package com.util;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -117,5 +118,16 @@ public class Date {
 	@Override
 	public String toString() {
 		return String.format("%02d-%02d-%d", this.day, this.month, this.year);
+	}
+
+	public static Date todaysDate() {
+
+		String days = new SimpleDateFormat("dd")
+				.format(Calendar.getInstance().getTime());
+		String months = new SimpleDateFormat("MM")
+				.format(Calendar.getInstance().getTime());
+		String years = new SimpleDateFormat("yyyy")
+				.format(Calendar.getInstance().getTime());
+		return new Date(Integer.parseInt(days), Integer.parseInt(months), Integer.parseInt(years) );
 	}
 }

@@ -14,11 +14,11 @@ import java.util.HashMap;
  * The main method of this class is used to update the database.
  */
 public class PointMakeUpGenerator {
-	private static int startList = 278;
-	private static int endList = 278;
+	private static int startList = 283;
+	private static int endList = 283;
 	private static String[] pointsNames = new String[]{"SL", "GS" , "SG" , "DH"};
 	private static int listsBackForIncrease = 13;
-	private static int startAtAthleteIndex = 11187;
+	private static int startAtAthleteIndex = 0;
 
 
 	/**

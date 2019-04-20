@@ -20,6 +20,8 @@ import com.util.Date;
  */
 public class Athlete {
 	private ArrayList<BioResult> allResults;
+	private String name;
+	private int compID;
 
 	/**
 	 * Represents an FIS alpine ski racing athlete.
@@ -28,9 +30,14 @@ public class Athlete {
 	 * @throws IOException
 	 */
 	public Athlete(int competitorID) throws IOException {
+		this.compID = competitorID;
 		Document bioPage = Jsoup.connect("https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL" +
 				"&limit=10000&type=result&competitorid=" + competitorID).get();
 		this.allResults = new ArrayList<>();
+		this.name = bioPage.select(".athlete-profile__lastname").first().ownText()
+				+ ", " + bioPage.select(".athlete-profile__name").first().ownText();
+		System.out.println(name);
+
 
 		ArrayList<Date> dates = new ArrayList<>();
 		Elements datesOnPage = bioPage.select("#results-body .g-lg-4");
@@ -48,10 +55,23 @@ public class Athlete {
 			disciplines.add(disciplinesOnPage.get(i).ownText());
 		}
 
+		ArrayList<String> ranks = new ArrayList<>();
+//		Elements ranksOnPage = bioPage.select("#results-body .g-lg");
+//		for (int i = 0; i < ranksOnPage.size(); i++) {
+//			ranks.add(ranksOnPage.get(i).ownText());
+//		}
+
+		ArrayList<String> venues = new ArrayList<>();
+		Elements venuesOnPage = bioPage.select(".clip-xs:nth-child(1)");
+		for (int i = 0; i < venuesOnPage.size(); i++) {
+			venues.add(venuesOnPage.get(i).ownText());
+		}
+
 		ArrayList<Double> points = new ArrayList<>();
 		Elements positionsOnPage = bioPage.select("#results-body .justify-right");
 		for (int i = 0; i < positionsOnPage.size(); i++ ) {
 			if (positionsOnPage.get(i).children().size() > 1 ) {
+				ranks.add(positionsOnPage.get(i).child(0).ownText());
 				if (positionsOnPage.get(i).child(0).ownText().contains("D")
 				|| positionsOnPage.get(i).child(1).ownText().equals("")) {
 					points.add(990.0);
@@ -64,9 +84,25 @@ public class Athlete {
 				}
 			}
 		}
+
+		Elements racesOnPage = bioPage.select(".table-row");
+		ArrayList<String> raceIDs = new ArrayList<>();
+		for(int i = 0 ; i < racesOnPage.size(); i++) {
+			String href = racesOnPage.get(i).attr("href");
+			try {
+				String raceid = href.substring(href.indexOf("raceid=") + 7);
+				raceIDs.add(raceid);
+			} catch(StringIndexOutOfBoundsException e) {
+				e.printStackTrace();
+			}
+
+
+		}
+
 		for (int i = 0; i < dates.size(); i++) {
 			try {
-				allResults.add(new BioResult(dates.get(i), disciplines.get(i), points.get(i)));
+				allResults.add(new BioResult(dates.get(i), disciplines.get(i),
+						venues.get(i), ranks.get(i), points.get(i), raceIDs.get(i)));
 			}
 			catch(IndexOutOfBoundsException e) {
 				e.printStackTrace();
@@ -217,5 +253,17 @@ public class Athlete {
 			}
 		}
 		return accu;
+	}
+
+	public ArrayList<BioResult> getAllResults() {
+		return allResults;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public int getCompID() {
+		return this.compID;
 	}
 }
